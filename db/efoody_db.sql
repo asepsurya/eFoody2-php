@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2021 at 01:19 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Aug 06, 2021 at 01:39 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `tbl_customer` (
   `no_kontak` varchar(15) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `level` int(2) NOT NULL
+  `level` int(2) NOT NULL COMMENT '1=admin 2=pengguna'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -44,7 +44,8 @@ CREATE TABLE `tbl_customer` (
 
 INSERT INTO `tbl_customer` (`id_customer`, `nm_customer`, `alamat_customer`, `kota`, `no_kontak`, `email`, `password`, `level`) VALUES
 (625001, 'Asep Surya Somantri', 'lorem Ipsum', '', '087731402487', 'asepsurya1998@gmail.com', '0938fe42b5ee7cddf56bceddd4ece4ff', 1),
-(625002, 'Deden Suryana', 'lorem Ipsum', '', '081323899376', 'deden2021@gmail.com', '0192023a7bbd73250516f069df18b500', 2);
+(625002, 'Deden Suryana', 'lorem Ipsum', '', '081323899376', 'deden2021@gmail.com', '0192023a7bbd73250516f069df18b500', 2),
+(625003, 'ass', 'lorem Ipsum', '', 'sss', 'sss@dasd', '03c7c0ace395d80182db07ae2c30f034', 2);
 
 -- --------------------------------------------------------
 
@@ -54,20 +55,29 @@ INSERT INTO `tbl_customer` (`id_customer`, `nm_customer`, `alamat_customer`, `ko
 
 CREATE TABLE `tbl_kategori` (
   `id_kategori` varchar(20) NOT NULL,
-  `jenis_kategori` varchar(30) NOT NULL
+  `jenis_kategori` varchar(30) NOT NULL,
+  `gambar` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_kategori`
 --
 
-INSERT INTO `tbl_kategori` (`id_kategori`, `jenis_kategori`) VALUES
-('K001', 'Minuman'),
-('K002', 'Jajanan'),
-('K003', 'Sweets'),
-('K004', 'Aneka Nasi'),
-('K005', 'Ayam dan Bebek'),
-('K006', 'Cepat Saji');
+INSERT INTO `tbl_kategori` (`id_kategori`, `jenis_kategori`, `gambar`) VALUES
+('K001', 'Minuman', 'ColaCan.png'),
+('K002', 'Jajanan', 'jajanan.svg'),
+('K003', 'Sweets', 'donat.svg'),
+('K004', 'Aneka Nasi', 'rice.svg'),
+('K005', 'Ayam dan Bebek', 'ayam.svg'),
+('K006', 'Cepat Saji', 'saji.svg'),
+('K007', 'Breakfast', 'Breakfast.png'),
+('K008', 'Salad', 'salad.png'),
+('K009', 'Fries', 'Fries.png'),
+('K010', 'Pizza', 'Pizza.png'),
+('K011', 'Burger', 'Burger.png'),
+('K012', 'Sandwich', 'Sandwich.png'),
+('K013', 'Coffee', 'Coffee.png'),
+('K014', 'Steak', 'steak.png');
 
 -- --------------------------------------------------------
 
@@ -132,17 +142,18 @@ CREATE TABLE `tbl_produk` (
   `jenis_produk` varchar(30) NOT NULL,
   `harga_produk` int(20) NOT NULL,
   `stok_produk` int(30) NOT NULL,
-  `deskripsi` text NOT NULL
+  `deskripsi` text NOT NULL,
+  `gambar` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_produk`
 --
 
-INSERT INTO `tbl_produk` (`id_produk`, `id_supplier`, `id_kategori`, `jenis_produk`, `harga_produk`, `stok_produk`, `deskripsi`) VALUES
-(25004554, 25445445, 854, 'Chicken Katsu ', 13000, 5, ''),
-(25004555, 25445445, 854, 'Cilok Mang Didi', 12000, 10, ''),
-(25004556, 25445445, 854, 'Kwetiaw', 12000, 10, '');
+INSERT INTO `tbl_produk` (`id_produk`, `id_supplier`, `id_kategori`, `jenis_produk`, `harga_produk`, `stok_produk`, `deskripsi`, `gambar`) VALUES
+(25004554, 25445445, 854, 'Chicken Katsu ', 13000, 5, '', ''),
+(25004555, 25445445, 854, 'Cilok Mang Didi', 12000, 10, '', ''),
+(25004556, 25445445, 854, 'Kwetiaw', 12000, 10, '', '');
 
 -- --------------------------------------------------------
 
