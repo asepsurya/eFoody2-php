@@ -77,7 +77,7 @@ INSERT INTO `tbl_kategori` (`id_kategori`, `jenis_kategori`, `gambar`) VALUES
 ('K011', 'Burger', 'Burger.png'),
 ('K012', 'Sandwich', 'Sandwich.png'),
 ('K013', 'Coffee', 'Coffee.png'),
-('K014', 'Steak', 'steak.png');
+('K014', 'Steak2', 'steak.png');
 
 -- --------------------------------------------------------
 
