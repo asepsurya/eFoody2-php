@@ -25,7 +25,7 @@ if($cek > 0){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
 		$_SESSION['level'] = "pegawai";
-		header("location:../../page_ikm/dashboard?id_kota=$data[id_kota]",true, 301);
+		header("location:../../../front_page/home");
 	    // cek jika user login sebagai pengurus
 	}else if($data['level']=="3"){
 		// buat session login dan username

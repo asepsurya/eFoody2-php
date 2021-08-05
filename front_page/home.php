@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php include '../asset/koneksi.php'; ?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -102,8 +102,9 @@
                                     <i class="feather-disc h6 mr-2 mb-0"></i> <span>Offers</span>
                                 </div>
                             </a>
+                            
                             <!-- signin -->
-                            <a href="login.html" class="widget-header mr-4 text-dark m-none">
+                            <a href="../pages/login/index" class="widget-header mr-4 text-dark m-none">
                                 <div class="icon d-flex align-items-center">
                                     <i class="feather-user h6 mr-2 mb-0"></i> <span>Sign in</span>
                                 </div>
@@ -163,60 +164,20 @@
         <!-- Filters -->
         <div class="container">
             <div class="cat-slider">
-                <div class="cat-item px-1 py-3">
-                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html">
-                        <img alt="#" src="img/icons/Fries.png" class="img-fluid mb-2">
-                        <p class="m-0 small">Fries</p>
+                <?php
+                $query = "SELECT * FROM tbl_kategori ";
+                $result = mysqli_query($koneksi, $query);
+                while($data = mysqli_fetch_assoc($result)){
+                    echo'
+                    <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html?id_kategori='.$data['id_kategori'].'">
+                        <img alt="#" src="img/'.$data['gambar'].'" class="img-fluid mb-2">
+                        <p class="m-0 small">'.$data['jenis_kategori'].'</p>
                     </a>
-                </div>
-                <div class="cat-item px-1 py-3">
-                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html">
-                        <img alt="#" src="img/icons/Pizza.png" class="img-fluid mb-2">
-                        <p class="m-0 small">Pizza</p>
-                    </a>
-                </div>
-                <div class="cat-item px-1 py-3">
-                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html">
-                        <img alt="#" src="img/icons/Burger.png" class="img-fluid mb-2">
-                        <p class="m-0 small">Burger</p>
-                    </a>
-                </div>
-                <div class="cat-item px-1 py-3">
-                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html">
-                        <img alt="#" src="img/icons/Sandwich.png" class="img-fluid mb-2">
-                        <p class="m-0 small">Sandwich</p>
-                    </a>
-                </div>
-                <div class="cat-item px-1 py-3">
-                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html">
-                        <img alt="#" src="img/icons/Coffee.png" class="img-fluid mb-2">
-                        <p class="m-0 small">Coffee</p>
-                    </a>
-                </div>
-                <div class="cat-item px-1 py-3">
-                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html">
-                        <img alt="#" src="img/icons/Steak.png" class="img-fluid mb-2">
-                        <p class="m-0 small">Steak</p>
-                    </a>
-                </div>
-                <div class="cat-item px-1 py-3">
-                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html">
-                        <img alt="#" src="img/icons/ColaCan.png" class="img-fluid mb-2">
-                        <p class="m-0 small">ColaCan</p>
-                    </a>
-                </div>
-                <div class="cat-item px-1 py-3">
-                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html">
-                        <img alt="#" src="img/icons/Breakfast.png" class="img-fluid mb-2">
-                        <p class="m-0 small">Breakfast</p>
-                    </a>
-                </div>
-                <div class="cat-item px-1 py-3">
-                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html">
-                        <img alt="#" src="img/icons/Salad.png" class="img-fluid mb-2">
-                        <p class="m-0 small">Salad</p>
-                    </a>
-                </div>
+                </div>';
+                }
+                ?>
+                    
             </div>
         </div>
         <!-- offer sectio slider -->
@@ -254,7 +215,7 @@
         <div class="container">
             <!-- Trending this week -->
             <div class="pt-4 pb-2 title d-flex align-items-center">
-                <h5 class="m-0">Trending this week</h5>
+                <h5 class="m-0">Makanan Terlaris</h5>
                 <a class="font-weight-bold ml-auto" href="trending.html">View all <i class="feather-chevrons-right"></i></a>
             </div>
             <!-- slider -->
@@ -354,7 +315,7 @@
             </div>
             <!-- Most popular -->
             <div class="py-3 title d-flex align-items-center">
-                <h5 class="m-0">Most popular</h5>
+                <h5 class="m-0">Rekomendasi</h5>
                 <a class="font-weight-bold ml-auto" href="most_popular.html">26 places <i class="feather-chevrons-right"></i></a>
             </div>
             <!-- Most popular -->
