@@ -74,9 +74,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Main content -->
       <div class="content">
         <div class="container-fluid">
-          <div class="card card-default">
+          <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#modal-default"> + Tambah Data </button></h3>
+              <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#modal-default"> <i class="fas fa-plus"></i>  Tambah Data </button></h3>
               
               <div class="card-tools">
                 
@@ -103,8 +103,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <th>#</th>
                       <th>ID</th>
                       <th>Jenis Produk</th>
-                      <th>Harga Produk</th>
-                      <th>Stok Produk</th>
+                      <th>Harga Produk <span class="badge bg-primary">Rp</span></th>
+                      <th>Stok Produk <span class="badge bg-warning">Pcs</span></th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -123,9 +123,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td>'.$data['harga_produk'].'</td>
                       <td>'.$data['stok_produk'].'</td>
                       <td><div class="btn-group " role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit" data-toggle="modal" data-target="#modal-edit'.$id_produk.'"></i></button>
-                        <a href="action/act_delete_produk.php?id_produk='.$data['id_produk'].'"><button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button></a>
-                        <button type="button" class="btn btn-default btn-sm">Right</button>
+                        <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit" data-toggle="modal" data-target="#modal-edit'.$id_produk.'"></i> Edit </button>
+                        <a href="action/act_delete_produk.php?id_produk='.$data['id_produk'].'"><button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i>Hapus</button></a>
+                       
                       </div></td>
                     </tr>
                     <tr class="expandable-body">
@@ -371,7 +371,7 @@ while($data1 = mysqli_fetch_assoc($result1)){
             <div class="row">
               
               <div class="col-md-6">
-                <form action="action/act_input_produk.php" method="post" enctype="multipart/form-data">
+                <form action="action/act_update_produk.php" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label> Jenis Produk </label>
                     <input type="text"class="form-control" name="nama_produk" value="<?php echo $data1['jenis_produk'] ?>">
@@ -380,7 +380,7 @@ while($data1 = mysqli_fetch_assoc($result1)){
                   <div class="form-group">
                     <label>Supplier</label>
                     <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="18" tabindex="-1" aria-hidden="true" name="supplier">
-                      <option selected> <?php echo $data1['nama_supplier'] ?></option>
+                      <option value="<?php echo $data1['id_supplier'] ?>" selected> <?php echo $data1['nama_supplier'] ?></option>
                       <?php
                       $query = "SELECT * FROM tbl_supplier";
                       $result = mysqli_query($koneksi, $query);
@@ -406,7 +406,7 @@ while($data1 = mysqli_fetch_assoc($result1)){
                 <div class="form-group">
                   <label>Kategori</label>
                   <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="17" tabindex="-1" aria-hidden="true" name="kategori">
-                    <option selected><?php echo $data1['jenis_kategori'] ?></option>
+                    <option selected value="<?php echo $data1['id_kategori'] ?>"><?php echo $data1['jenis_kategori'] ?></option>
                     <?php
                     $query = "SELECT * FROM tbl_kategori";
                     $result = mysqli_query($koneksi, $query);
