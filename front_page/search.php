@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include '../asset/koneksi.php'; ?>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,6 +19,7 @@
   <link href="css/style.css" rel="stylesheet">
   <!-- Sidebar CSS -->
   <link href="vendor/sidebar/demo.css" rel="stylesheet">
+  <?php include '../asset/koneksi.php'; ?>
 </head>
 
 <body class="fixed-bottom-bar">
@@ -102,9 +103,8 @@
                   <i class="feather-disc h6 mr-2 mb-0"></i> <span>Offers</span>
                 </div>
               </a>
-              
               <!-- signin -->
-              <a href="../pages/login/index" class="widget-header mr-4 text-dark m-none">
+              <a href="login.html" class="widget-header mr-4 text-dark m-none">
                 <div class="icon d-flex align-items-center">
                   <i class="feather-user h6 mr-2 mb-0"></i> <span>Sign in</span>
                 </div>
@@ -143,325 +143,135 @@
     </section>
     <!-- header-main .// -->
   </header>
-  <div class="osahan-home-page">
-    <div class="bg-primary p-3 d-none">
-      <div class="text-white">
-        <div class="title d-flex align-items-center">
-          <a class="toggle" href="#">
-            <span></span>
-          </a>
-          <h4 class="font-weight-bold m-0 pl-5">Browse</h4>
-          <a class="text-white font-weight-bold ml-auto" data-toggle="modal" data-target="#exampleModal" href="#">Filter</a>
-        </div>
-      </div>
-      <div class="input-group mt-3 rounded shadow-sm overflow-hidden">
-        <div class="input-group-prepend">
-          <button class="border-0 btn btn-outline-secondary text-dark bg-white btn-block"><i class="feather-search"></i></button>
-        </div>
-        <input type="text" class="shadow-none border-0 form-control" placeholder="Search for restaurants or dishes">
-      </div>
+  <div class="d-none">
+    <div class="bg-primary p-3 d-flex align-items-center">
+      <a class="toggle togglew toggle-2" href="#"><span></span></a>
+      <h4 class="font-weight-bold m-0 text-white">Search</h4>
     </div>
-    <!-- Filters -->
+  </div>
+  <div class="osahan-popular">
+    <!-- Most popular -->
     <div class="container">
-      <div class="cat-slider">
+      <div class="search py-5">
+        <div class="input-group mb-4">
+          <input type="text" class="form-control form-control-lg input_search border-right-0" id="inlineFormInputGroup" value="Osahan eats...">
+          <div class="input-group-prepend">
+            <div class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></div>
+          </div>
+        </div>
+        <!-- nav tabs -->
         <?php
-        $query = "SELECT * FROM tbl_kategori ";
+        $id_kategori=$_GET['id_kategori'];
+        $query = "SELECT * FROM tbl_produk where id_kategori='$id_kategori' ";
         $result = mysqli_query($koneksi, $query);
-        while($data = mysqli_fetch_assoc($result)){
-        echo'
-        <div class="cat-item px-1 py-3">
-          <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="search.php?id_kategori='.$data['id_kategori'].'">
-            <img alt="#" src="img/'.$data['gambar'].'" class="img-fluid mb-2">
-            <p class="m-0 small">'.$data['jenis_kategori'].'</p>
-          </a>
-        </div>';
-      }
-      ?>
-      
-    </div>
-  </div>
-  <!-- offer sectio slider -->
-  <div class="bg-white">
-    <div class="container">
-      <div class="offer-slider">
-        <div class="cat-item px-1 py-3">
-          <a class="d-block text-center shadow-sm" href="trending.html">
-            <img alt="#" src="img/pro1.jpg" class="img-fluid rounded">
-          </a>
-        </div>
-        <div class="cat-item px-1 py-3">
-          <a class="d-block text-center shadow-sm" href="trending.html">
-            <img alt="#" src="img/pro2.jpg" class="img-fluid rounded">
-          </a>
-        </div>
-        <div class="cat-item px-1 py-3">
-          <a class="d-block text-center shadow-sm" href="trending.html">
-            <img alt="#" src="img/pro3.jpg" class="img-fluid rounded">
-          </a>
-        </div>
-        <div class="cat-item px-1 py-3">
-          <a class="d-block text-center shadow-sm" href="trending.html">
-            <img alt="#" src="img/pro4.jpg" class="img-fluid rounded">
-          </a>
-        </div>
-        <div class="cat-item px-1 py-3">
-          <a class="d-block text-center shadow-sm" href="trending.html">
-            <img alt="#" src="img/pro2.jpg" class="img-fluid rounded">
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <!-- Trending this week -->
-    <div class="pt-4 pb-2 title d-flex align-items-center">
-      <h5 class="m-0">Makanan Terlaris</h5>
-      <a class="font-weight-bold ml-auto" href="trending.html">View all <i class="feather-chevrons-right"></i></a>
-    </div>
-    <!-- slider -->
-    <div class="trending-slider">
-      <div class="osahan-slider-item">
-        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-            <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
-            <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-            <a href="restaurant.html">
-              <img alt="#" src="img/trending1.png" class="img-fluid item-img w-100">
-            </a>
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-              <h6 class="mb-1"><a href="restaurant.html" class="text-black">Famous Dave's Bar-B-Que
-              </a>
-            </h6>
-            <p class="text-gray mb-3">Vegetarian • Indian • Pure veg</p>
-            <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="feather-clock"></i> 15–30 min</span></p>
-          </div><b class="mb-10"><label> Rp. 5000 </label></b>
-          <div class="list-card-badge">
-            <span class="badge badge-danger">OFFER</span> <small> Use Coupon OSAHAN50</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="osahan-slider-item">
-      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-        <div class="list-card-image">
-          <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
-          <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
-          <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-          <a href="restaurant.html">
-            <img alt="#" src="img/trending2.png" class="img-fluid item-img w-100">
-          </a>
-        </div>
-        <div class="p-3 position-relative">
-          <div class="list-card-body">
-            <h6 class="mb-1"><a href="restaurant.html" class="text-black">Thai Famous Cuisine</a></h6>
-            <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-            <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="feather-clock"></i> 30–35 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
-          </div>
-          <div class="list-card-badge">
-            <span class="badge badge-success">OFFER</span> <small>65% off</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="osahan-slider-item">
-      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-        <div class="list-card-image">
-          <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
-          <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
-          <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-          <a href="restaurant.html">
-            <img alt="#" src="img/trending3.png" class="img-fluid item-img w-100">
-          </a>
-        </div>
-        <div class="p-3 position-relative">
-          <div class="list-card-body">
-            <h6 class="mb-1"><a href="restaurant.html" class="text-black">The osahan Restaurant
-            </a>
-          </h6>
-          <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
-          <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="feather-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $500 FOR TWO</span></p>
-        </div>
-        
-        <div class="list-card-badge">
-          <span class="badge badge-danger">OFFER</span> <small>65% OSAHAN50</small>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="osahan-slider-item">
-    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-      <div class="list-card-image">
-        <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
-        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
-        <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-        <a href="restaurant.html">
-          <img alt="#" src="img/trending2.png" class="img-fluid item-img w-100">
-        </a>
-      </div>
-      <div class="p-3 position-relative">
-        <div class="list-card-body">
-          <h6 class="mb-1"><a href="restaurant.html" class="text-black">Thai Famous Cuisine</a></h6>
-          <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-          <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="feather-clock"></i> 30–35 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
-        </div>
-        <div class="list-card-badge">
-          <span class="badge badge-success">OFFER</span> <small>65% off</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Most popular -->
-<div class="py-3 title d-flex align-items-center">
-  <h5 class="m-0">Rekomendasi</h5>
-  <a class="font-weight-bold ml-auto" href="most_popular.html">26 places <i class="feather-chevrons-right"></i></a>
-</div>
-<!-- Most popular -->
-<div class="most_popular">
-  <div class="row">
-    <?php
-    $query = "SELECT tbl_produk.*,tbl_kategori.jenis_kategori FROM tbl_produk,tbl_kategori where tbl_produk.id_kategori = tbl_kategori.id_kategori";
-    $result = mysqli_query($koneksi, $query);
-    while($data = mysqli_fetch_assoc($result)){
-        
-    ?>
-    <div class="col-md-3 pb-3">
-      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-        <div class="list-card-image">
-          <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
-          <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
-          <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-          <a href="restaurant.html">
-            <img alt="#" src="../pages/data_produk/upload/<?php echo $data['gambar'] ?>" class="img-fluid item-img w-100">
-          </a>
-        </div>
-        <div class="p-3 position-relative">
-          <div class="list-card-body">
-            <h6 class="mb-1"><a href="restaurant.html" class="text-black"><?php echo $data['jenis_produk'] ?>
-            </a>
-        </h6>
-          <p class="text-gray mb-1 small"><?php echo $data['jenis_kategori'] ?></p>
+        $cek = mysqli_num_rows($result);
+        ?>
+        <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active border-0 bg-light text-dark rounded" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="feather-home mr-2"></i>Produk (<?php echo  $cek  ?>)</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link border-0 bg-light text-dark rounded ml-3" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="feather-disc mr-2"></i>Dishes (23)</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <!-- Content Row -->
+            <div class="container mt-4 mb-4 p-0">
+       
+            <?php
+            
+            $query = "SELECT * FROM tbl_produk where id_kategori='$id_kategori' ";
+            $result = mysqli_query($koneksi, $query);
+            $cek = mysqli_num_rows($result);
+            
+            if($cek == 0){
+            echo' <div class="row d-flex align-items-center justify-content-center py-5">
+             <div class="col-md-4 py-5">
+               <div class="text-center py-5">
+                 <p class="h4 mb-4"><i class="feather-search bg-primary text-white rounded p-2"></i></p>
+                 <p class="font-weight-bold text-dark h5">Nothing found</p>
+                 <p>we could not find anything that would match your search request, please try again.</p>
+               </div>
+             </div>
+           </div>
+         </div>';
+       }else{
+        echo' <!-- restaurants nearby -->
+        <div class="row">';
+       while($data = mysqli_fetch_assoc($result)){
           
-          <p class="text-gray mb-1 rating">
-          </p>
-          <ul class="rating-stars list-unstyled">
-            <li>
-              <i class="feather-star star_active"></i>
-              <i class="feather-star star_active"></i>
-              <i class="feather-star star_active"></i>
-              <i class="feather-star star_active"></i>
-              <i class="feather-star"></i>
-            </li>
-          </ul>
-          <p></p>
+       ?>
+      
+          <div class="col-md-3 pb-3">
+            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+              <div class="list-card-image">
+                <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
+                <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
+                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
+                <a href="restaurant.html">
+                  <img alt="#" src="../pages/data_produk/upload/<?php echo $data['gambar'] ?>" class="img-fluid item-img w-100">
+                </a>
+              </div>
+              <div class="p-3 position-relative">
+                <div class="list-card-body">
+                  <h6 class="mb-1"><a href="restaurant.html" class="text-black"><?php echo $data['jenis_produk'] ?>
+                  </a>
+                </h6>
+                <p class="text-gray mb-1 small"><?php echo $data['jenis_kategori'] ?></p>
+                
+                <p class="text-gray mb-1 rating">
+                </p>
+                <ul class="rating-stars list-unstyled">
+                  <li>
+                    <i class="feather-star star_active"></i>
+                    <i class="feather-star star_active"></i>
+                    <i class="feather-star star_active"></i>
+                    <i class="feather-star star_active"></i>
+                    <i class="feather-star"></i>
+                  </li>
+                </ul>
+                <p></p>
+              </div>
+              <div class="list-card-badge">
+                Rp. <?php echo $data['harga_produk'] ?> <span class="badge badge-danger">IDR</span> 
+              </div>
+            </div>
+            <button type="button" class="btn btn-success btn-block">Pesan</button>
+          </div>
         </div>
-        <div class="list-card-badge">
-        Rp. <?php echo $data['harga_produk'] ?> <span class="badge badge-danger">IDR</span> 
-        </div>
-      </div>
-      <button type="button" class="btn btn-success btn-block">Pesan</button>
-    </div>
-  </div>
-  <?php } ?>
-</div>
-</div>
-<!-- Most sales -->
-<div class="pt-2 pb-3 title d-flex align-items-center">
-  <h5 class="m-0">Most sales</h5>
-  <a class="font-weight-bold ml-auto" href="#">26 places <i class="feather-chevrons-right"></i></a>
-</div>
-<!-- Most sales -->
-<div class="most_sale">
-  <div class="row mb-3">
-    <div class="col-md-4 mb-3">
-      <div class="d-flex align-items-center list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-        <div class="list-card-image">
-          <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
-          <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
-          <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-          <a href="restaurant.html">
-            <img alt="#" src="img/sales1.png" class="img-fluid item-img w-100">
-          </a>
-        </div>
-        <div class="p-3 position-relative">
-          <div class="list-card-body">
-            <h6 class="mb-1"><a href="restaurant.html" class="text-black">The osahan Restaurant
-            </a>
-          </h6>
-          <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
-          <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="feather-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $500 FOR TWO</span></p>
-        </div>
-        <div class="list-card-badge">
-          <span class="badge badge-danger">OFFER</span> <small>65% OSAHAN50</small>
-        </div>
+        <?php } } ?>
       </div>
     </div>
   </div>
-  <div class="col-md-4 mb-3">
-    <div class="d-flex align-items-center list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-      <div class="list-card-image">
-        <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
-        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
-        <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-        <a href="restaurant.html">
-          <img alt="#" src="img/sales2.png" class="img-fluid item-img w-100">
-        </a>
-      </div>
-      <div class="p-3 position-relative">
-        <div class="list-card-body">
-          <h6 class="mb-1"><a href="restaurant.html" class="text-black">Thai Famous Cuisine</a></h6>
-          <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-          <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="feather-clock"></i> 30–35 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
-        </div>
-        <div class="list-card-badge">
-          <span class="badge badge-success">OFFER</span> <small>65% off</small>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <!-- Content Row -->
+    <div class="row d-flex align-items-center justify-content-center py-5">
+      <div class="col-md-4 py-5">
+        <div class="text-center py-5">
+          <p class="h4 mb-4"><i class="feather-search bg-primary text-white rounded p-2"></i></p>
+          <p class="font-weight-bold text-dark h5">Nothing found</p>
+          <p>we could not find anything that would match your search request, please try again.</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-4 mb-3">
-    <div class="d-flex align-items-center list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-      <div class="list-card-image">
-        <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
-        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
-        <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-        <a href="restaurant.html">
-          <img alt="#" src="img/sales3.png" class="img-fluid item-img w-100">
-        </a>
-      </div>
-      <div class="p-3 position-relative">
-        <div class="list-card-body">
-          <h6 class="mb-1"><a href="restaurant.html" class="text-black">The osahan Restaurant
-          </a>
-        </h6>
-        <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
-        <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="feather-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $500 FOR TWO</span></p>
-      </div>
-      <div class="list-card-badge">
-        <span class="badge badge-danger">OFFER</span> <small>65% OSAHAN50</small>
-      </div>
-    </div>
-  </div>
 </div>
-</div>
-</div>
+<!--  -->
 </div>
 </div>
 <!-- Footer -->
 <div class="osahan-menu-fotter fixed-bottom bg-white px-3 py-2 text-center d-none">
   <div class="row">
-    <div class="col selected">
-      <a href="home.html" class="text-danger small font-weight-bold text-decoration-none">
-        <p class="h4 m-0"><i class="feather-home text-danger"></i></p>
+    <div class="col">
+      <a href="home.html" class="text-dark small font-weight-bold text-decoration-none">
+        <p class="h4 m-0"><i class="feather-home"></i></p>
         Home
       </a>
     </div>
-    <div class="col">
-      <a href="most_popular.html" class="text-dark small font-weight-bold text-decoration-none">
-        <p class="h4 m-0"><i class="feather-map-pin"></i></p>
+    <div class="col selected">
+      <a href="trending.html" class="text-danger small font-weight-bold text-decoration-none">
+        <p class="h4 m-0"><i class="feather-map-pin text-danger"></i></p>
         Trending
       </a>
     </div>
@@ -486,11 +296,12 @@
     </div>
   </div>
 </div>
+</div>
 <!-- footer -->
 <footer class="section-footer border-top bg-dark">
   <div class="container">
     <section class="footer-top padding-y py-5">
-      <div class="row">
+      <div class="row pt-3">
         <aside class="col-md-4 footer-about">
           <article class="d-flex pb-3">
             <div><img alt="#" src="img/logo_web.png" class="logo-footer mr-3"></div>
@@ -714,77 +525,70 @@
           </li>
         </ul>
       </nav>
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- filters modal -->
+      <div class="modal fade" id="filters" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Filter</h5>
+              <h5 class="modal-title">Filters</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body p-0">
-              <div class="osahan-filter">
-                <div class="filter">
-                  <!-- SORT BY -->
-                  <div class="p-3 bg-light border-bottom">
-                    <h6 class="m-0">SORT BY</h6>
-                  </div>
-                  <div class="custom-control border-bottom px-0  custom-radio">
-                    <input type="radio" id="customRadio1f" name="location" class="custom-control-input" checked>
-                    <label class="custom-control-label py-3 w-100 px-3" for="customRadio1f">Top Rated</label>
-                  </div>
-                  <div class="custom-control border-bottom px-0  custom-radio">
-                    <input type="radio" id="customRadio2f" name="location" class="custom-control-input">
-                    <label class="custom-control-label py-3 w-100 px-3" for="customRadio2f">Nearest Me</label>
-                  </div>
-                  <div class="custom-control border-bottom px-0  custom-radio">
-                    <input type="radio" id="customRadio3f" name="location" class="custom-control-input">
-                    <label class="custom-control-label py-3 w-100 px-3" for="customRadio3f">Cost High to Low</label>
-                  </div>
-                  <div class="custom-control border-bottom px-0  custom-radio">
-                    <input type="radio" id="customRadio4f" name="location" class="custom-control-input">
-                    <label class="custom-control-label py-3 w-100 px-3" for="customRadio4f">Cost Low to High</label>
-                  </div>
-                  <div class="custom-control border-bottom px-0  custom-radio">
-                    <input type="radio" id="customRadio5f" name="location" class="custom-control-input">
-                    <label class="custom-control-label py-3 w-100 px-3" for="customRadio5f">Most Popular</label>
-                  </div>
-                  <!-- Filter -->
-                  <div class="p-3 bg-light border-bottom">
-                    <h6 class="m-0">FILTER</h6>
-                  </div>
-                  <div class="custom-control border-bottom px-0  custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultCheck1" checked>
-                    <label class="custom-control-label py-3 w-100 px-3" for="defaultCheck1">Open Now</label>
-                  </div>
-                  <div class="custom-control border-bottom px-0  custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultCheck2">
-                    <label class="custom-control-label py-3 w-100 px-3" for="defaultCheck2">Credit Cards</label>
-                  </div>
-                  <div class="custom-control border-bottom px-0  custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultCheck3">
-                    <label class="custom-control-label py-3 w-100 px-3" for="defaultCheck3">Alcohol Served</label>
-                  </div>
-                  <!-- Filter -->
-                  <div class="p-3 bg-light border-bottom">
-                    <h6 class="m-0">ADDITIONAL FILTERS</h6>
-                  </div>
-                  <div class="px-3 pt-3">
-                    <input type="range" class="custom-range" min="0" max="100" name="minmax">
-                    <div class="form-row">
-                      <div class="form-group col-6">
-                        <label>Min</label>
-                        <input class="form-control" placeholder="$0" type="number">
-                      </div>
-                      <div class="form-group text-right col-6">
-                        <label>Max</label>
-                        <input class="form-control" placeholder="$1,0000" type="number">
-                      </div>
+            <div class="modal-body">
+              <form>
+                <!-- SORT BY -->
+                <h6>SORT BY</h6>
+                <div class="custom-control border-bottom px-0  custom-radio">
+                  <input type="radio" id="customRadio1f" name="location" class="custom-control-input" checked>
+                  <label class="custom-control-label py-2 w-100 px-3" for="customRadio1f">Top Rated</label>
+                </div>
+                <div class="custom-control border-bottom px-0  custom-radio">
+                  <input type="radio" id="customRadio2f" name="location" class="custom-control-input">
+                  <label class="custom-control-label py-2 w-100 px-3" for="customRadio2f">Nearest Me</label>
+                </div>
+                <div class="custom-control border-bottom px-0  custom-radio">
+                  <input type="radio" id="customRadio3f" name="location" class="custom-control-input">
+                  <label class="custom-control-label py-2 w-100 px-3" for="customRadio3f">Cost High to Low</label>
+                </div>
+                <div class="custom-control border-bottom px-0  custom-radio">
+                  <input type="radio" id="customRadio4f" name="location" class="custom-control-input">
+                  <label class="custom-control-label py-2 w-100 px-3" for="customRadio4f">Cost Low to High</label>
+                </div>
+                <div class="custom-control border-bottom px-0  custom-radio">
+                  <input type="radio" id="customRadio5f" name="location" class="custom-control-input">
+                  <label class="custom-control-label py-2 w-100 px-3" for="customRadio5f">Most Popular</label>
+                </div>
+                <!-- Filter -->
+                <h6 class="mt-4">FILTER</h6>
+                <div class="custom-control border-bottom px-0  custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="defaultCheck1" checked>
+                  <label class="custom-control-label py-2 w-100 px-3" for="defaultCheck1">Open Now</label>
+                </div>
+                <div class="custom-control border-bottom px-0  custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="defaultCheck2">
+                  <label class="custom-control-label py-2 w-100 px-3" for="defaultCheck2">Credit Cards</label>
+                </div>
+                <div class="custom-control border-bottom px-0  custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="defaultCheck3">
+                  <label class="custom-control-label py-2 w-100 px-3" for="defaultCheck3">Alcohol Served</label>
+                </div>
+                <!-- Filter -->
+                <h6 class="mt-4">ADDITIONAL FILTERS</h6>
+                <div class="px-3">
+                  <input type="range" class="custom-range" min="0" max="100" name="minmax">
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label>Min</label>
+                      <input class="form-control" placeholder="$0" type="number">
+                    </div>
+                    <div class="form-group text-right col-6">
+                      <label>Max</label>
+                      <input class="form-control" placeholder="$1,0000" type="number">
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
             <div class="modal-footer p-0 border-0">
               <div class="col-6 m-0 p-0">
