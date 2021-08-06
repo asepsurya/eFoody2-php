@@ -340,9 +340,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.modal-dialog -->
 </div>
 <?php
-$query = "SELECT tbl_produk.*,tbl_supplier.*  FROM tbl_produk,tbl_supplier where tbl_produk.id_supplier = tbl_supplier.id_supplier ";
-$result = mysqli_query($koneksi, $query);
-while($data1 = mysqli_fetch_assoc($result)){
+$query1 = "SELECT * from tbl_produk INNER JOIN tbl_supplier ON tbl_produk.id_supplier = tbl_supplier.id_supplier INNER JOIN tbl_kategori ON tbl_produk.id_kategori = tbl_kategori.id_kategori";
+$result1 = mysqli_query($koneksi, $query1);
+while($data1 = mysqli_fetch_assoc($result1)){
+  
 ?>
 <!-- /.modal -->
 <div class="modal fade" id="modal-edit<?php echo $data1['id_produk'] ?>">
@@ -405,7 +406,7 @@ while($data1 = mysqli_fetch_assoc($result)){
                 <div class="form-group">
                   <label>Kategori</label>
                   <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="17" tabindex="-1" aria-hidden="true" name="kategori">
-                    <option selected></option>
+                    <option selected><?php echo $data1['jenis_kategori'] ?></option>
                     <?php
                     $query = "SELECT * FROM tbl_kategori";
                     $result = mysqli_query($koneksi, $query);
@@ -445,12 +446,12 @@ while($data1 = mysqli_fetch_assoc($result)){
         
       </div>
     </div>
-    <?php } ?>
+    
     <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
 </div>
-
+<?php } ?>
 <!-- /.modal -->
 <!-- modal gambar -->
 <!-- Modal -->
