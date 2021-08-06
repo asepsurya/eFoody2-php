@@ -20,6 +20,7 @@
       </div>';
  ?>
       <!-- SidebarSearch Form -->
+      <div id="topheader">
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -37,7 +38,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-close">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -46,7 +47,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Active Page</p>
                 </a>
@@ -70,7 +71,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../pages/admin/data_produk/index" class="nav-link ">
+                <a href="/eFoody2/pages/data_produk/index" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Data Produk</p>
                 </a>
@@ -120,4 +121,11 @@
       </nav>
       <!-- /.sidebar-menu -->
     </div>
+</div>
     <!-- /.sidebar -->
+    <script> 
+    $( '#topheader .sidebar .nav-item' ).on( 'click', function () {
+	$( '#topheader .sidebar .nav-item' ).find( 'nav-link.active nav-item.menu-close' ).removeClass( 'active menu-close' );
+	$( this ).parent( 'nav-link nav-item' ).addClass( 'active menu-close' );
+});
+</script>

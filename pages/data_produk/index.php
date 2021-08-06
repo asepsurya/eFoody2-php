@@ -123,7 +123,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td>'.$data['harga_produk'].'</td>
                       <td>'.$data['stok_produk'].'</td>
                       <td><div class="btn-group " role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit" data-toggle="modal" data-target="#modal-edit'.$id_produk.'"></i></button>
                         <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
                         <button type="button" class="btn btn-default btn-sm">Right</button>
                       </div></td>
@@ -339,6 +339,118 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
   <!-- /.modal-dialog -->
 </div>
+<?php
+$query = "SELECT tbl_produk.*,tbl_supplier.*  FROM tbl_produk,tbl_supplier where tbl_produk.id_supplier = tbl_supplier.id_supplier ";
+$result = mysqli_query($koneksi, $query);
+while($data1 = mysqli_fetch_assoc($result)){
+?>
+<!-- /.modal -->
+<div class="modal fade" id="modal-edit<?php echo $data1['id_produk'] ?>">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Data Produk</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title"> Form Untuk Menginput data Produk Baru</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              
+              <div class="col-md-6">
+                <form action="action/act_input_produk.php" method="post" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label> Jenis Produk </label>
+                    <input type="text"class="form-control" name="nama_produk" value="<?php echo $data1['jenis_produk'] ?>">
+                  </div>
+                  <input type="text"class="form-control" name="id_produk"  hidden value="<?php echo $data1['id_produk'] ?>">
+                  <div class="form-group">
+                    <label>Supplier</label>
+                    <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="18" tabindex="-1" aria-hidden="true" name="supplier">
+                      <option selected> <?php echo $data1['nama_supplier'] ?></option>
+                      <?php
+                      $query = "SELECT * FROM tbl_supplier";
+                      $result = mysqli_query($koneksi, $query);
+                      while($data = mysqli_fetch_array($result)){
+                      echo'<option value="'.$data['id_supplier'].'"> '.$data['nama_supplier'].'</option>';
+                    }
+                    
+                    ?>
+                  </select>
+                </div>
+                <!-- /.form-group -->
+                <div class="form-group">
+                  <label> Jumlah Stok </label>
+                  <input type="text"class="form-control" name="stok" value="<?php echo $data1['stok_produk'] ?>">
+                </div>
+              </div>
+              <!-- /.col -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label> Harga Produk (Rp.) </label>
+                  <input type="number"class="form-control" name="harga" value="<?php echo $data1['harga_produk'] ?>">
+                </div>
+                <div class="form-group">
+                  <label>Kategori</label>
+                  <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="17" tabindex="-1" aria-hidden="true" name="kategori">
+                    <option selected></option>
+                    <?php
+                    $query = "SELECT * FROM tbl_kategori";
+                    $result = mysqli_query($koneksi, $query);
+                    while($data = mysqli_fetch_array($result)){
+                    echo'<option value="'.$data['id_kategori'].'"> '.$data['jenis_kategori'].'</option>';
+                  }
+                  
+                  ?>
+                </select>
+              </div>
+              <!-- /.form-group -->
+              <div class="form-group">
+                <label> Upload Foto Produk </label><br>
+                <input id="input-b1" name="foto" type="file" class="file" data-browse-on-zone-click="true">
+              </div>
+              
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+          <label> Deskripsi Produk </label>
+          <textarea  class="form-control" name="deskripsi" rows="10"><?php echo $data1['deskripsi'] ?></textarea>
+          
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+              the plugin.-->
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+        
+      </div>
+    </div>
+    <?php } ?>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
 <!-- /.modal -->
 <!-- modal gambar -->
 <!-- Modal -->
