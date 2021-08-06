@@ -70,7 +70,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
           <!-- /.card-header -->
           <div class="card-body" style="display: block;">
-           .....
+          <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                        <th style="width: 100px"></th>
+                      <th style="width: 10px">#</th>
+                      <th>Jenis Kategori </th>
+                      <th style="width: 200px">ID</th>
+                      <th style="width: 100px">Icon SVG</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                    $no=0;
+                    $query = "SELECT * FROM tbl_kategori ";
+                    $result = mysqli_query($koneksi, $query);
+                    while($data = mysqli_fetch_assoc($result)){ $no++;
+                        echo'
+                    <tr>
+                        <td>
+                        <div class="btn-group btn-sm" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-default"><i class="nav-ico fas fa-edit"></i></button>
+                          <button type="button" class="btn btn-default"><i class=" nav-ico fas fa-trash"></i></button>
+                          
+                        </div></th>
+                      <td>'.$no.'</td>
+                      <td>'.$data['jenis_kategori'].'</td>
+                      <td>'.$data['id_kategori'].'</td>
+                      <td><center><img src="../../front_page/img/'.$data['gambar'].'" width="50"></center></td>
+                    </tr>
+                    <tr>';
+                    } ?>
+                     
+                  </tbody>
+                </table>
           </div>
           <!-- /.card-body -->
           <div class="card-footer" style="display: block;">
