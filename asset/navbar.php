@@ -127,7 +127,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="../pages/login/index" role="button">
+        <a class="nav-link"  href="/eFoody2/pages/login/index" role="button">
          Keluar
         </a>
       </li>

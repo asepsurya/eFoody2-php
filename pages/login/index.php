@@ -70,7 +70,7 @@
     <!-- /.card-body -->
   </div>
   <br>
-  <center><a href="ads">Kembali ke halaman Utama</a></center>
+  <center><a href="../../front_page/home">Kembali ke halaman Utama</a></center>
   <!-- /.card -->
 </div>
 <!-- jQuery -->

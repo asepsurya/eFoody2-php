@@ -80,8 +80,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               
               <div class="card-tools">
                 
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                <div class="input-group input-group-sm" style="width: 150px;"> 
+                  <input type="text" name="table_search" class="form-control float-right" placeholder="Search" id="myInput" onkeyup="myFunction()">
 
                   <div class="input-group-append">
                     <button type="submit" class="btn btn-default">
@@ -97,7 +97,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-body table-responsive p-0">
                 <!-- tables -->
                 <!-- tables -->
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" name="myTable">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -683,5 +683,26 @@ while($data = mysqli_fetch_assoc($result)){
   }
   // DropzoneJS Demo Code End
 </script>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
 </body>
 </html>
