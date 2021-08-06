@@ -62,7 +62,7 @@
         
           <li class="nav-item menu-close">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-boxes"></i>
               <p>
                 Data Produk
                 <i class="right fas fa-angle-left"></i>
@@ -86,7 +86,7 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-store"></i>
               <p>
                 Data Supplier
               </p>
@@ -102,7 +102,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-motorcycle"></i>
               <p>
                 Data Driver
               </p>
@@ -110,7 +110,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Database Pelanggan
               </p>
