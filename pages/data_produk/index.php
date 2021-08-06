@@ -124,7 +124,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td>'.$data['stok_produk'].'</td>
                       <td><div class="btn-group " role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit" data-toggle="modal" data-target="#modal-edit'.$id_produk.'"></i></button>
-                        <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                        <a href="action/act_delete_produk.php?id_produk='.$data['id_produk'].'"><button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button></a>
                         <button type="button" class="btn btn-default btn-sm">Right</button>
                       </div></td>
                     </tr>

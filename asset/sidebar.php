@@ -37,9 +37,20 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <li class="nav-header">Kunjungi Halaman Depan</li>
+               <li class="nav-item">
+            <a href="/eFoody2/front_page/home" class="nav-link" target="_blank" >
+              <i class="nav-icon fab fa-staylinked"></i>
+              <p>
+                Websiteku
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Main Menu</li>
                <li class="nav-item">
             <a href="/eFoody2/pages/starter" class="nav-link">
-              <i class="nav-icon fas fa-store"></i>
+           
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
@@ -80,7 +91,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-hand-holding-usd"></i>
               <p>
                 Transaksi
               </p>

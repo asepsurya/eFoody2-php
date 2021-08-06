@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2021 at 01:39 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 7.3.29
+-- Generation Time: Aug 06, 2021 at 12:50 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -138,12 +138,12 @@ DELIMITER ;
 CREATE TABLE `tbl_produk` (
   `id_produk` int(20) NOT NULL,
   `id_supplier` int(30) NOT NULL,
-  `id_kategori` int(11) NOT NULL,
+  `id_kategori` varchar(20) NOT NULL,
   `jenis_produk` varchar(30) NOT NULL,
   `harga_produk` int(20) NOT NULL,
   `stok_produk` int(30) NOT NULL,
   `deskripsi` text NOT NULL,
-  `gambar` varchar(30) NOT NULL
+  `gambar` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -151,9 +151,11 @@ CREATE TABLE `tbl_produk` (
 --
 
 INSERT INTO `tbl_produk` (`id_produk`, `id_supplier`, `id_kategori`, `jenis_produk`, `harga_produk`, `stok_produk`, `deskripsi`, `gambar`) VALUES
-(25004554, 25445445, 854, 'Chicken Katsu ', 13000, 5, '', ''),
-(25004555, 25445445, 854, 'Cilok Mang Didi', 12000, 10, '', ''),
-(25004556, 25445445, 854, 'Kwetiaw', 12000, 10, '', '');
+(62003, 25445446, 'K005', 'Opor Ayam Pedas', 12000, 20, 'Lorem Ipsum Dolor sit amet', 'popular6.png'),
+(62004, 25445445, 'K005', 'Noodles', 50000, 20, '-', 'popular7.png'),
+(62005, 25445445, 'K006', 'Thai Famous Cuisine', 50000, 10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet faucibus cursus. Cras tincidunt quam justo, et sollicitudin sapien cursus a', 'popular8.png'),
+(62006, 25445445, 'K004', 'Paket Hemat', 50000, 12, 'Lrem Ipsum Dolor sit amet', 'popular2.png'),
+(62007, 25445446, 'K002', 'Kwetiaw', 12000, 112, 'Kwetiaw Enak, Lezat dan Nikmat', 'popular5.png');
 
 -- --------------------------------------------------------
 
@@ -167,6 +169,14 @@ CREATE TABLE `tbl_supplier` (
   `alamat` text NOT NULL,
   `no_telp_supplier` int(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_supplier`
+--
+
+INSERT INTO `tbl_supplier` (`id_supplier`, `nama_supplier`, `alamat`, `no_telp_supplier`) VALUES
+(25445445, 'PT. INDOFOOD', 'tasikmalaya', 854421144),
+(25445446, 'PT. INDO Barista', 'tasikmalaya', 854421144);
 
 -- --------------------------------------------------------
 
