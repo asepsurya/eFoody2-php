@@ -85,7 +85,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <th>Nama Supplier</th>
                       <th>Telepon</th>
                       <th>Alamat</th>
-                      <th></th>
+                      <th>@Email</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -101,6 +101,7 @@ echo'
                       <td>'.$row['nama_supplier'].'</td>
                       <td>'.$row['no_telp_supplier'].'</td>
                       <td>'.$row['alamat'].'</td>
+                      <td>'.$row['email'].'</td>
                       <td>
                       <div class="btn-group ">
                       <div class="btn-group ">
@@ -127,20 +128,57 @@ echo'
 
 <!-- Modal -->
 <div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Form Input Data </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <?php
+$query = mysqli_query($koneksi, "SELECT max(id_supplier) as kodeTerbesar FROM tbl_supplier");
+$data = mysqli_fetch_array($query);
+$kodeBarang = $data['kodeTerbesar'];
+
+$urutan = (int) substr($kodeBarang, 3, 3);
+$urutan++; 
+$huruf = "25";
+$kodeBarang = $huruf . sprintf("%05s", $urutan);
+ 
+?>
       <div class="modal-body">
-        ...
+      <form action="action/act_input_supplier.php" method="POST">
+        <div class="form-group">
+          <label> ID Supplier </label>
+          <input type="text" class="form-control form-control-border" readOnly name="id_supplier" placeholder="ID Supplier" required value="<?php echo $kodeBarang ?>">
+        </div>
+        <div class="form-group">
+          <label> Nama Supplier</label>
+          <input type="text" class="form-control form-control-border" name="nm_supplier" placeholder="Nama Supplier" required>
+        </div>
+        <div class="form-group">
+          <label>Alamat Lengkap</label>
+          <textarea type="text" class="form-control" name="alamat" placeholder="Alamat Lengkap" required></textarea>
+        </div>
+        <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                  </div>
+                  <input type="email" class="form-control" placeholder="Email" name="email" required>
+                </div>
+                <br>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                  </div>
+                  <input type="number" class="form-control" placeholder="Nomor Telepon" name="telp" required>
+                </div>
       </div>
+      
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary btn-block">Save changes</button>
+        </form>
       </div>
     </div>
   </div>
