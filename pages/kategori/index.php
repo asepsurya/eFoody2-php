@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
       <div class="card card-primary card-outline">
           <div class="card-header">
-            <h3 class="card-title">Select2 (Bootstrap4 Theme)</h3>
+            <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Tambah Data</button></h3>
 
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -83,15 +83,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <tbody>
                   <?php
                     $no=0;
-                    $query = "SELECT * FROM tbl_kategori ";
+                    $query = "SELECT * FROM tbl_kategori ORDER BY id_kategori DESC";
                     $result = mysqli_query($koneksi, $query);
                     while($data = mysqli_fetch_assoc($result)){ $no++;
                         echo'
                     <tr>
                         <td>
-                        <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-default"><i class="nav-ico fas fa-edit"></i></button>
-                          <button type="button" class="btn btn-default"><i class=" nav-ico fas fa-trash"></i></button>
+                        <div class="btn-group " role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-primary btn-sm"><i class="nav-ico fas fa-edit" data-toggle="modal" data-target="#edit'.$data['id_kategori'].'"></i></button>
+                         <a href="action/act_delete_produk.php?id_kategori='.$data['id_kategori'].'"> <button type="button" class="btn btn-danger btn-sm"><i class=" nav-ico fas fa-trash"></i></button></a>
                           
                         </div></th>
                       <td>'.$no.'</td>
@@ -129,7 +129,76 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
   </aside>
   <!-- /.control-sidebar -->
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori Baru </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="action/act_input_kategori.php" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label> ID Kategori </label>
+            <input type="text" class="form-control" name="id_kategori" required>
+          </div>
+          <div class="form-group">
+            <label> Jenis Kategori </label>
+            <input type="text" class="form-control" name="jenis_kategori" required>
+          </div>
+            <div class="form-group">
+            <label> Icon </label>
+            <input type="file" class="form-control" name="foto">    
+            </div>
+      </div>
+      <div class="modal-footer"> 
+        <button type="submit" class="btn btn-primary btn-block" >Save changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<?php           
+$myquery = "SELECT * FROM tbl_kategori ORDER BY id_kategori DESC";
+$myresult = mysqli_query($koneksi, $myquery);
+while($row = mysqli_fetch_assoc($myresult)){
+?>
+<div class="modal fade" id="edit<?php echo $row['id_kategori'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="action/act_edit_kategori.php" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label> ID Kategori </label>
+            <input type="text" class="form-control" name="id_kategori" required>
+          </div>
+          <div class="form-group">
+            <label> Jenis Kategori </label>
+            <input type="text" class="form-control" name="jenis_kategori" required>
+          </div>
+            <div class="form-group">
+            <label> Icon </label>
+            <input type="file" class="form-control" name="foto">    
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-block" >Save changes</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<?php } ?>
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
