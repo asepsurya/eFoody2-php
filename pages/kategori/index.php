@@ -49,35 +49,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
+      
     </div>
     <!-- /.content-header -->
-
+    <div class="container-fluid">
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
-      <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Tambah Data</button></h3>
+    <div class="card card-primary card-outline">
+              <div class="card-header">
+               <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Tambah Data</button></h3>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body" style="display: block;">
-          <table class="table table-bordered">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 500px;">
+                <table class="table table-head-fixed text-nowrap">
                   <thead>
                     <tr>
-                        <th style="width: 100px"></th>
+                      <th style="width: 10px"></th>
                       <th style="width: 10px">#</th>
                       <th>Jenis Kategori </th>
-                      <th style="width: 200px">ID</th>
-                      <th style="width: 100px">Icon SVG</th>
+                      <th></th>
+                      <th>Icon SVG</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -89,33 +91,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         echo'
                     <tr>
                         <td>
-                        <div class="btn-group " role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-primary btn-sm"><i class="nav-ico fas fa-edit" data-toggle="modal" data-target="#edit'.$data['id_kategori'].'"></i></button>
-                         <a href="action/act_delete_produk.php?id_kategori='.$data['id_kategori'].'"> <button type="button" class="btn btn-danger btn-sm"><i class=" nav-ico fas fa-trash"></i></button></a>
+                        <div class="btn-group ">
+                          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit'.$data['id_kategori'].'">Edit</button>
+                         <a href="action/act_delete_produk.php?id_kategori='.$data['id_kategori'].'"> <button type="button" class="btn btn-default btn-sm"><i class=" nav-ico fas fa-trash"></i></button></a>
                           
                         </div></th>
-                      <td>'.$no.'</td>
-                      <td>'.$data['jenis_kategori'].'</td>
                       <td>'.$data['id_kategori'].'</td>
-                      <td><center><img src="../../front_page/img/'.$data['gambar'].'" width="50"></center></td>
+                      <td>'.$data['jenis_kategori'].'</td>
+                      <td></td>
+                      <td><img src="../../front_page/img/'.$data['gambar'].'" width="20"></td>
                     </tr>
                     <tr>';
                     } ?>
-                     
+                   
                   </tbody>
                 </table>
-          </div>
-          <!-- /.card-body -->
-          <div class="card-footer" style="display: block;">
-            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-            the plugin.
-          </div>
-        </div>
-
-        
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            
+                  </div>
+         </div> 
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -171,7 +167,7 @@ $myresult = mysqli_query($koneksi, $myquery);
 while($row = mysqli_fetch_assoc($myresult)){
 ?>
 <div class="modal fade" id="edit<?php echo $row['id_kategori'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Edit Kategori</h5>
@@ -183,11 +179,11 @@ while($row = mysqli_fetch_assoc($myresult)){
       <form action="action/act_update_kategori.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label> ID Kategori </label>
-            <input type="text" class="form-control" name="id_kategori"  value="<?php echo $row['id_kategori'] ?>">
+            <input type="text" class="form-control form-control-border" name="id_kategori"  value="<?php echo $row['id_kategori'] ?>">
           </div>
           <div class="form-group">
             <label> Jenis Kategori </label>
-            <input type="text" class="form-control" name="jenis_kategori" value="<?php echo $row['jenis_kategori'] ?>">
+            <input type="text" class="form-control form-control-border" name="jenis_kategori" value="<?php echo $row['jenis_kategori'] ?>">
           </div>
             <div class="form-group">
             <label> Icon </label>

@@ -39,7 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><i class="fa fa-store"></i>  Supplier</h1>
+            <h1 class="m-0"><i class="fa fa-store"></i>  Pelanggan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -81,23 +81,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <thead>
                     <tr>
                       <th># ID</th>
-                      <th>Nama Supplier</th>
+                      <th>Nama Lengkap</th>
                       <th>Telepon</th>
                       <th>Alamat</th>
+                      <th>Email</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
                   <?php           
-$myquery = "SELECT * FROM tbl_supplier";
+$myquery = "SELECT * FROM tbl_customer";
 $myresult = mysqli_query($koneksi, $myquery);
 while($row = mysqli_fetch_assoc($myresult)){
 echo'
                     <tr>
-                      <td>'.$row['id_supplier'].'</td>
-                      <td>'.$row['nama_supplier'].'</td>
-                      <td>'.$row['no_telp_supplier'].'</td>
-                      <td>'.$row['alamat'].'</td>
+                      <td>'.$row['id_customer'].'</td>
+                      <td>'.$row['nm_customer'].'</td>
+                      <td>'.$row['no_kontak'].'</td>
+                      <td>'.$row['alamat_customer'].'</td>
+                      <td>'.$row['email'].'</td>
                       <td>
                       <div class="btn-group ">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus"></i>  Tambah Data </button>

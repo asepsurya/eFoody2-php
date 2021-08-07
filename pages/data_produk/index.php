@@ -79,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="btn-group">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus"></i>  Tambah Data </button>
                         <button type="button" class="btn btn-default"><i class="far fa-file-pdf"></i> Exsport Data</button>
-                        <button type="button" class="btn btn-default">Right</button>
+                        
                       </div>
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -94,16 +94,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
+              <div class="card-body table-responsive p-0" style="height: 500px;">
+                <table class="table table-head-fixed text-nowrap">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th style="width: 10px">#</th>
                       <th>ID</th>
                       <th>Jenis Produk</th>
                       <th>Harga Produk <span class="badge bg-primary">Rp</span></th>
                       <th>Stok Produk <span class="badge bg-warning">Pcs</span></th>
-                      <th>Action</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -115,16 +115,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     $id_produk = $data['id_produk'];
                     echo'
                     <tr data-widget="expandable-table" aria-expanded="false">
-                      <td>'.$no.'</td>
+                      <td><div class="btn-group ">
+                      <button type="button" class="btn btn-default btn-sm btn-flat" data-toggle="modal" data-target="#modal-edit'.$id_produk.'"> Edit </button>
+                      <a href="action/act_delete_produk.php?id_produk='.$data['id_produk'].'"><button type="button" class="btn btn-default btn-sm btn-flat" ><i class="far fa-trash-alt"></i></button></a>
+                     
+                      </div></td>
                       <td>'.$data['id_produk'].'</td>
                       <td>'.$data['jenis_produk'].'</td>
                       <td>'.$data['harga_produk'].'</td>
                       <td>'.$data['stok_produk'].'</td>
-                      <td><div class="btn-group ">
-                        <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit" data-toggle="modal" data-target="#modal-edit'.$id_produk.'"></i> Edit </button>
-                        <a href="action/act_delete_produk.php?id_produk='.$data['id_produk'].'"><button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i>Hapus</button></a>
-                       
-                      </div></td>
+                      <td></td>
                     </tr>
                     <tr class="expandable-body">
                     <div class="card-body table-responsive p-0">
