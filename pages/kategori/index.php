@@ -95,7 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit'.$data['id_kategori'].'">Edit</button>
                          <a href="action/act_delete_produk.php?id_kategori='.$data['id_kategori'].'"> <button type="button" class="btn btn-default btn-sm"><i class=" nav-ico fas fa-trash"></i></button></a>
                           
-                        </div></th>
+                        </div></td>
                       <td>'.$data['id_kategori'].'</td>
                       <td>'.$data['jenis_kategori'].'</td>
                       <td></td>

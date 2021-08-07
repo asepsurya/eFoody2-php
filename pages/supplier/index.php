@@ -105,8 +105,8 @@ echo'
                       <td>
                       <div class="btn-group ">
                       <div class="btn-group ">
-                      <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit'.$row['id_supplier'].'">Edit</button>
-                     <a href="action/act_delete_produk.php?id_kategori='.$row['id_supplier'].'"> <button type="button" class="btn btn-default btn-sm"><i class=" nav-ico fas fa-trash"></i></button></a>
+                      <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-edit'.$row['id_supplier'].'">Edit</button>
+                     <a href="action/act_delete_supplier.php?id_supplier='.$row['id_supplier'].'"> <button type="button" class="btn btn-default btn-sm"><i class=" nav-ico fas fa-trash"></i></button></a>
                     </div>
                       </div>
                       </td>
@@ -137,14 +137,14 @@ echo'
         </button>
       </div>
       <?php
-$query = mysqli_query($koneksi, "SELECT max(id_supplier) as kodeTerbesar FROM tbl_supplier");
-$data = mysqli_fetch_array($query);
-$kodeBarang = $data['kodeTerbesar'];
+$query12 = mysqli_query($koneksi, "SELECT max(id_supplier) as kodeTerbesar FROM tbl_supplier");
+$data12= mysqli_fetch_array($query12);
+$kodeBarang = $data12['kodeTerbesar'];
 
 $urutan = (int) substr($kodeBarang, 3, 3);
 $urutan++; 
 $huruf = "25";
-$kodeBarang = $huruf . sprintf("%05s", $urutan);
+$kodeBarang = $huruf . sprintf("%03s", $urutan);
  
 ?>
       <div class="modal-body">
@@ -184,8 +184,57 @@ $kodeBarang = $huruf . sprintf("%05s", $urutan);
   </div>
 </div>
 
+<?php $myquery2 = "SELECT * FROM tbl_supplier";
+$myresult2 = mysqli_query($koneksi, $myquery2);
+while($data = mysqli_fetch_assoc($myresult2)){ ?>
+<!-- Modal -->
+<div class="modal fade" id="modal-edit<?php echo $data['id_supplier'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Form Ubah Data </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="action/act_update_supplier.php" method="POST">
+        <div class="form-group">
+          <label> ID Supplier </label>
+          <input type="text" class="form-control form-control-border" readOnly name="id_supplier" placeholder="ID Supplier" required value="<?php echo $data['id_supplier'] ?>">
+        </div>
+        <div class="form-group">
+          <label> Nama Supplier</label>
+          <input type="text" class="form-control form-control-border" name="nm_supplier" placeholder="Nama Supplier" required value="<?php echo $data['nama_supplier'] ?>">
+        </div>
+        <div class="form-group">
+          <label>Alamat Lengkap</label>
+          <textarea type="text" class="form-control" name="alamat" placeholder="Alamat Lengkap" required><?php echo $data['alamat'] ?></textarea>
+        </div>
+        <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                  </div>
+                  <input type="email" class="form-control" placeholder="Email" name="email" required value="<?php echo $data['email'] ?>">
+                </div>
+                <br>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                  </div>
+                  <input type="number" class="form-control" placeholder="Nomor Telepon" name="telp" required value="<?php echo $data['no_telp_supplier'] ?>">
+                </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-block">Save changes</button>
+        </form>
 
-
+      </div>
+    </div>
+  </div>
+</div>
+<?php } ?>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

@@ -138,13 +138,13 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Management Stok</p>
+                  <p>Management Pengguna</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/eFoody2/pages/kategori/index" class="nav-link">
+                <a href="/eFoody2/pages/iframe/index" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Kategori</p>
+                  <p>Database</p>
                 </a>
               </li>
             </ul>
