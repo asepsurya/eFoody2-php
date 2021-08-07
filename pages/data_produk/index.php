@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <?php include '../../asset/navbar.php' ?>
     <?php include '../../asset/koneksi.php' ?>
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
         <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -74,30 +74,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Main content -->
       <div class="content">
         <div class="container-fluid">
-          <div class="card card-primary card-outline">
-            <div class="card-header">
-              <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#modal-default"> <i class="fas fa-plus"></i>  Tambah Data </button></h3>
-              
-              <div class="card-tools">
-                
-                <div class="input-group input-group-sm" style="width: 150px;"> 
-                  <input type="text" name="table_search" class="form-control float-right" placeholder="Search" id="myInput" onkeyup="myFunction()">
+        <div class="card card-primary card-outline">
+              <div class="card-header">
+              <div class="btn-group">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus"></i>  Tambah Data </button>
+                        <button type="button" class="btn btn-default"><i class="far fa-file-pdf"></i> Exsport Data</button>
+                        <button type="button" class="btn btn-default">Right</button>
+                      </div>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                      <i class="fas fa-search"></i>
-                    </button>
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
                   </div>
                 </div>
-                
               </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body" style="display: block;">
+              <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                <!-- tables -->
-                <!-- tables -->
-                <table class="table table-bordered table-hover" name="myTable">
+                <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -122,92 +120,85 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td>'.$data['jenis_produk'].'</td>
                       <td>'.$data['harga_produk'].'</td>
                       <td>'.$data['stok_produk'].'</td>
-                      <td><div class="btn-group " role="group" aria-label="Basic example">
+                      <td><div class="btn-group ">
                         <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit" data-toggle="modal" data-target="#modal-edit'.$id_produk.'"></i> Edit </button>
                         <a href="action/act_delete_produk.php?id_produk='.$data['id_produk'].'"><button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i>Hapus</button></a>
                        
                       </div></td>
                     </tr>
                     <tr class="expandable-body">
-                      <div class="card-body table-responsive p-0">
-                        <td colspan="6" class="col-1">
-                          
-                          <div class="card">
-                            <div class="card-header">
-                              <h3 class="card-title"><b>Rincian Produk</b></h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body p-0">
-                              <table class="table table-sm">
-                                <thead>
-                                  <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th style="width: 100px">ID Supplier</th>
-                                    <th style="width: 200px">Nama Supplier</th>
-                                    
-                                    <th style="width: 150px">Jenis Kategori </th>
-                                    <th style="width: 100px">Foto</th>
-                                    <th>Deskripsi </th>
-                                  </tr>
-                                </thead>
-                                <tbody>';
-                                  $id_supplier= $data['id_supplier'];
-                                  $nomor=0;
-                                  $query2 = "SELECT * FROM tbl_supplier where id_supplier='$id_supplier'";
-                                  $result1 = mysqli_query($koneksi, $query2);
-                                  while($row = mysqli_fetch_assoc($result1)){
-                                  $nomor++;
-                                  $supplier = $row['nama_supplier'];
-                                }
-                                echo'
+                    <div class="card-body table-responsive p-0">
+                      <td colspan="6" class="col-1">
+                        
+                        <div class="card card-primary card-outline">
+                          <div class="card-header">
+                            <h3 class="card-title"><b>Rincian Produk</b></h3>
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body p-0">
+                            <table class="table table-sm">
+                              <thead>
                                 <tr>
-                                  <td>'.$nomor.'. </td>
-                                  <td>'.$id_supplier.'</td>
-                                  <td>'.$supplier.'</td>';
+                                  <th style="width: 10px">#</th>
+                                  <th style="width: 100px">ID Supplier</th>
+                                  <th style="width: 200px">Nama Supplier</th>
                                   
+                                  <th style="width: 150px">Jenis Kategori </th>
+                                  <th style="width: 100px">Foto</th>
+                                  <th>Deskripsi </th>
+                                </tr>
+                              </thead>
+                              <tbody>';
+                                $id_supplier= $data['id_supplier'];
+                                $nomor=0;
+                                $query2 = "SELECT * FROM tbl_supplier where id_supplier='$id_supplier'";
+                                $result1 = mysqli_query($koneksi, $query2);
+                                while($row = mysqli_fetch_assoc($result1)){
+                                $nomor++;
+                                $supplier = $row['nama_supplier'];
+                              }
+                              echo'
+                              <tr>
+                                <td>'.$nomor.'. </td>
+                                <td>'.$id_supplier.'</td>
+                                <td>'.$supplier.'</td>';
+                                
 
-                                  $id_kategori= $data['id_kategori'];
-                                  $nomor=0;
-                                  $query3 = "SELECT * FROM tbl_kategori where id_kategori='$id_kategori'";
-                                  $result2 = mysqli_query($koneksi, $query3);
-                                  while($myrow = mysqli_fetch_assoc($result2)){
-                                  $nomor++;
-                                  $kategori = $myrow['jenis_kategori'];
-                                }
-                                echo'
-                                <td>'.$kategori.'</td>
-                                <td>
-                                  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#a'.$id_produk.'">
-                                   Gambar
-                                 </button>
-                               </td>
-                               <td>'.$data['deskripsi'].'</td>
-                             </tr>
-                             
-                           </tbody>
-                         </table>
-                       </div>
-                       <!-- /.card-body -->
+                                $id_kategori= $data['id_kategori'];
+                                $nomor=0;
+                                $query3 = "SELECT * FROM tbl_kategori where id_kategori='$id_kategori'";
+                                $result2 = mysqli_query($koneksi, $query3);
+                                while($myrow = mysqli_fetch_assoc($result2)){
+                                $nomor++;
+                                $kategori = $myrow['jenis_kategori'];
+                              }
+                              echo'
+                              <td>'.$kategori.'</td>
+                              <td>
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#a'.$id_produk.'">
+                                 Gambar
+                               </button>
+                             </td>
+                             <td style="width: 100px">'.$data['deskripsi'].'</td>
+                           </tr>
+                           
+                         </tbody>
+                       </table>
                      </div>
-                     <br>
-                   </tbody>
-                 </td>
-                 
-               </div>
-             </tr>';
-           } ?>
-         </tbody>
-       </table>         
-       
-       <!-- tables-->
-     </div>
-   </div>
-   <!-- /.card-body -->
-   <div class="card-footer" style="display: block;">
-    =
-  </div>
-</div>
-
+                     <!-- /.card-body -->
+                   </div>
+                   
+                 </tbody>
+               </td>
+               
+             </div>
+           </tr>';
+         } ?>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
 
 </div><!-- /.container-fluid -->
 </div>
@@ -269,7 +260,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <input type="text"class="form-control" name="id_produk"  hidden value="<?php echo $kodeBarang ?>">
                   <div class="form-group">
                     <label>Supplier</label>
-                    <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="18" tabindex="-1" aria-hidden="true" name="supplier">
+                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"   data-select2-id="9" tabindex="-1" aria-hidden="true" name="supplier">
                       <option selected> ------ Pilih Supplier ------ </option>
                       <?php
                       $query = "SELECT * FROM tbl_supplier";
@@ -295,7 +286,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <div class="form-group">
                   <label>Kategori</label>
-                  <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="17" tabindex="-1" aria-hidden="true" name="kategori">
+                  <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"   data-select2-id="2" tabindex="-1" aria-hidden="true" name="kategori">
                     <option selected> ------ Pilih Kategori ------ </option>
                     <?php
                     $query = "SELECT * FROM tbl_kategori";
@@ -310,7 +301,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- /.form-group -->
               <div class="form-group">
                 <label> Upload Foto Produk </label><br>
-                <input id="input-b1" name="foto" type="file" class="file" data-browse-on-zone-click="true">
+                <div class="custom-file">
+                      <input type="file" class="form-control custom-file-input" id="customFile" name="foto">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>    
+            
               </div>
               
             </div>
@@ -334,6 +329,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <button type="submit" class="btn btn-primary">Save changes</button>
         </form>
       </div>
+      
     </div>
     <!-- /.modal-content -->
   </div>
@@ -379,7 +375,7 @@ while($data1 = mysqli_fetch_assoc($result1)){
                   <input type="text"class="form-control" name="id_produk"  hidden value="<?php echo $data1['id_produk'] ?>">
                   <div class="form-group">
                     <label>Supplier</label>
-                    <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="18" tabindex="-1" aria-hidden="true" name="supplier">
+                    <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="17" tabindex="-1" aria-hidden="true" name="supplier">
                       <option value="<?php echo $data1['id_supplier'] ?>" selected> <?php echo $data1['nama_supplier'] ?></option>
                       <?php
                       $query = "SELECT * FROM tbl_supplier";
@@ -405,7 +401,7 @@ while($data1 = mysqli_fetch_assoc($result1)){
                 </div>
                 <div class="form-group">
                   <label>Kategori</label>
-                  <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="17" tabindex="-1" aria-hidden="true" name="kategori">
+                  <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;"   data-select2-id="21" tabindex="-1" aria-hidden="true" name="kategori">
                     <option selected value="<?php echo $data1['id_kategori'] ?>"><?php echo $data1['jenis_kategori'] ?></option>
                     <?php
                     $query = "SELECT * FROM tbl_kategori";
@@ -420,7 +416,11 @@ while($data1 = mysqli_fetch_assoc($result1)){
               <!-- /.form-group -->
               <div class="form-group">
                 <label> Upload Foto Produk </label><br>
-                <input id="input-b1" name="foto" type="file" class="file" data-browse-on-zone-click="true">
+                <div class="custom-file">
+                      <input type="file" class="form-control custom-file-input" id="customFile" name="foto">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>    
+            
               </div>
               
             </div>
@@ -512,8 +512,6 @@ while($data = mysqli_fetch_assoc($result)){
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Select2 -->
 <script src="../../plugins/select2/js/select2.full.min.js"></script>
-<!-- Bootstrap4 Duallistbox -->
-<script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- InputMask -->
 <script src="../../plugins/moment/moment.min.js"></script>
 <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
@@ -532,23 +530,14 @@ while($data = mysqli_fetch_assoc($result)){
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 
-<!-- Page specific script -->
-<?php include '../../asset/alert.php' ?>
-<!-- Select2 -->
-<script src="../../plugins/select2/js/select2.full.min.js"></script>
 <script src="../../plugins/toastr/toastr.min.js"></script>
 <?php include '../../asset/alert.php' ?>
+<!-- bs-custom-file-input -->
+<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script>
- $(function () {
-    // Summernote
-    $('#summernote').summernote()
-
-    // CodeMirror
-    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-      mode: "htmlmixed",
-      theme: "monokai"
-    });
-  })
+$(function () {
+  bsCustomFileInput.init();
+});
 </script>
 <script>
   $(function () {
@@ -559,6 +548,7 @@ while($data = mysqli_fetch_assoc($result)){
     $('.select2bs4').select2({
       theme: 'bootstrap4'
     })
+    
 
     //Datemask dd/mm/yyyy
     $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })

@@ -131,7 +131,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.control-sidebar -->
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori Baru </h5>
@@ -143,15 +143,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <form action="action/act_input_kategori.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label> ID Kategori </label>
-            <input type="text" class="form-control" name="id_kategori" required>
+            <input type="text" class="form-control form-control-border" name="id_kategori" required>
           </div>
           <div class="form-group">
             <label> Jenis Kategori </label>
-            <input type="text" class="form-control" name="jenis_kategori" required>
+            <input type="text" class="form-control form-control-border" name="jenis_kategori" required>
           </div>
             <div class="form-group">
             <label> Icon </label>
-            <input type="file" class="form-control" name="foto">    
+            <div class="custom-file">
+                      <input type="file" class="form-control custom-file-input" id="customFile" name="foto">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>    
             </div>
       </div>
       <div class="modal-footer"> 
@@ -171,20 +174,20 @@ while($row = mysqli_fetch_assoc($myresult)){
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Kategori</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form action="action/act_edit_kategori.php" method="POST" enctype="multipart/form-data">
+      <form action="action/act_update_kategori.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label> ID Kategori </label>
-            <input type="text" class="form-control" name="id_kategori" required>
+            <input type="text" class="form-control" name="id_kategori"  value="<?php echo $row['id_kategori'] ?>">
           </div>
           <div class="form-group">
             <label> Jenis Kategori </label>
-            <input type="text" class="form-control" name="jenis_kategori" required>
+            <input type="text" class="form-control" name="jenis_kategori" value="<?php echo $row['jenis_kategori'] ?>">
           </div>
             <div class="form-group">
             <label> Icon </label>
@@ -220,6 +223,13 @@ while($row = mysqli_fetch_assoc($myresult)){
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <script src="../../plugins/toastr/toastr.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <?php include '../../asset/alert.php' ?>
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
 </body>
 </html>

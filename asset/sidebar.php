@@ -88,7 +88,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/eFoody2/pages/supplier/index" class="nav-link">
               <i class="nav-icon fas fa-store"></i>
               <p>
                 Data Supplier
@@ -99,7 +99,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-hand-holding-usd"></i>
               <p>
-                Transaksi
+                Transaksi <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -119,15 +119,61 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-boxes"></i>
+              <p>
+                Pengaturan Toko
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/eFoody2/pages/data_produk/index" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Alamat Toko</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Management Stok</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/eFoody2/pages/kategori/index" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kategori</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header">Main Menu</li>
+          <li class="nav-item">
+                <a href="/eFoody2/pages/kategori/index" class="nav-link">
+                  <i class="far fa fa-book nav-icon"></i>
+                  <p>Laporan Transaksi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/eFoody2/pages/kategori/index" class="nav-link">
+                  <i class="far fa fa-book nav-icon"></i>
+                  <p>Laporan Masuk Barang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/eFoody2/pages/kategori/index" class="nav-link">
+                  <i class="far fa fa-book nav-icon"></i>
+                  <p>Laporan Masuk Barang</p>
+                </a>
+              </li>
+              
+              
         </ul>
       </nav>
+      
       <!-- /.sidebar-menu -->
     </div>
 </div>
-    <!-- /.sidebar -->
-    <script> 
-    $( '#topheader .sidebar .nav-item' ).on( 'click', function () {
-	$( '#topheader .sidebar .nav-item' ).find( 'nav-link.active nav-item.menu-close' ).removeClass( 'active menu-close' );
-	$( this ).parent( 'nav-link nav-item' ).addClass( 'active menu-close' );
-});
-</script>
+  
