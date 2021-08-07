@@ -122,7 +122,7 @@
 
           <li class="nav-item menu-close">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-boxes"></i>
+              <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Pengaturan Toko
                 <i class="right fas fa-angle-left"></i>

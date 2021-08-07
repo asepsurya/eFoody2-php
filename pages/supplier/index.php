@@ -59,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="card card-primary card-outline">
               <div class="card-header">
               <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus"></i>  Tambah Data </button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah"><i class="fas fa-plus"></i>  Tambah Data </button>
                         <button type="button" class="btn btn-default"><i class="far fa-file-pdf"></i> Exsport Data</button>
                         <button type="button" class="btn btn-default">Right</button>
                       </div>
@@ -80,6 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
+                      <th></th>
                       <th># ID</th>
                       <th>Nama Supplier</th>
                       <th>Telepon</th>
@@ -88,20 +89,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </tr>
                   </thead>
                   <tbody>
-                  <?php           
+                  <?php      
+                  $no=0;     
 $myquery = "SELECT * FROM tbl_supplier";
 $myresult = mysqli_query($koneksi, $myquery);
-while($row = mysqli_fetch_assoc($myresult)){
+while($row = mysqli_fetch_assoc($myresult)){$no++;
 echo'
                     <tr>
+                    <td>'.$no.'</td>
                       <td>'.$row['id_supplier'].'</td>
                       <td>'.$row['nama_supplier'].'</td>
                       <td>'.$row['no_telp_supplier'].'</td>
                       <td>'.$row['alamat'].'</td>
                       <td>
                       <div class="btn-group ">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus"></i>  Tambah Data </button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="far fa-file-pdf"></i> Exsport Data</button>
+                      <div class="btn-group ">
+                      <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit'.$row['id_supplier'].'">Edit</button>
+                     <a href="action/act_delete_produk.php?id_kategori='.$row['id_supplier'].'"> <button type="button" class="btn btn-default btn-sm"><i class=" nav-ico fas fa-trash"></i></button></a>
+                    </div>
                       </div>
                       </td>
                     </tr>';
@@ -118,6 +123,30 @@ echo'
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

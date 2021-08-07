@@ -362,7 +362,7 @@
         Rp. <?php echo $data['harga_produk'] ?> <span class="badge badge-danger">IDR</span> 
         </div>
       </div>
-      <button type="button" class="btn btn-success btn-block">Pesan</button>
+      <button type="button" class="btn btn-success btn-block btn-flat">Pesan</button>
     </div>
   </div>
   <?php } ?>
