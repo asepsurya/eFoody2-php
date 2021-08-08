@@ -5,7 +5,7 @@
         <div class="row align-items-center">
           <div class="col-1">
             <a href="/eFoody2/front_page/home" class="brand-wrap mb-0">
-              <img alt="/eFoody2/front_page/home" class="img-fluid" src="img/logo_web.png">
+            <img src="../logo.png" alt="eFoody" width="150">
             </a>
             <!-- brand-wrap.// -->
           </div>
@@ -72,7 +72,7 @@
               echo'
               <div class="col-10">
             <div class="d-flex align-items-center justify-content-end pr-5">
-            <div class="input-group mb-4 widget-header mr-4" style="margin-top: 15px; ">
+            <div class="input-group mb-4 widget-header mr-4" style="margin-top: 18px; ">
             <input type="text" class="form-control form-control-lg input_search border-right-0" id="inlineFormInputGroup" placeholder="Mau Makan Apa Hari ini...?">
             <div class="input-group-prepend">
               <div class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></div>
@@ -97,10 +97,10 @@
     echo'
                 <div class="dropdown mr-4 m-none">
                   <a href="#" class="dropdown-toggle text-dark py-3 d-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img alt="#" src="https://lh3.googleusercontent.com/proxy/ESfaeROUSN2Aqqw79Y2OxKBALOyQPAPjRlG3p71TVi1V_NzJw3Ikz46ShGdNZ307gSisunw3U5KjUaLbglJzN0OgmPZPydcTn9M" class="img-fluid rounded-circle header-user mr-2 header-user"> Hi, '.$a.'
+                    <img alt="#" src="../pages/login/img/'.$data['gambar'].'" class="img-fluid rounded-circle header-user mr-2 header-user"> Hi, '.$a.'
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="profile.html">My account</a>
+                    <a class="dropdown-item" href="profile.php">My account</a>
                     <a class="dropdown-item" href="faq.html">Delivery support</a>
                     <a class="dropdown-item" href="contact-us.html">Contant us</a>
                     <a class="dropdown-item" href="terms.html">Term of use</a>
@@ -109,9 +109,7 @@
                   </div>
                 </div>
                 
-               <a class="toggle" style="margin-top: 5px; " href="#">
-                  <span></span>
-                </a>
+              
                 
                 </div>
                 </div>

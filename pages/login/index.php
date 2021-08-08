@@ -21,7 +21,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>e</b>Foody</a>
+      <img alt="#" src="../../logo.png" class="img-fluid item-img w-50">
     </div>
     <div class="card-body">
   

@@ -9,6 +9,6 @@ $email = $_POST ['email'];
 $telp = $_POST ['telp'];
 $level = $_POST ['level'];
 
-mysqli_query($koneksi,"INSERT INTO tbl_customer VALUES('$id_pelanggan','$nama_pelanggan','$alamat','','$telp','$email','','$level')");
+mysqli_query($koneksi,"INSERT INTO tbl_customer VALUES('$id_pelanggan','$nama_pelanggan','$alamat','','$telp','$email','','user-default.jpg')");
 header("location:../index?pesan=tambah");
 

@@ -14,6 +14,11 @@
       toastr.error('Login Gagal..!! Mohon Periksa kembali data Anda...!')
     </script>
   <?php } ?>
+  <?php if($_GET['pesan'] == 'invalid'){ ?>
+    <script>
+      toastr.error('Anda Harus Login Terlebih Dahulu...')
+    </script>
+  <?php } ?>
   <?php if($_GET['pesan'] == 'tidaksama'){ ?>
     <script>
       toastr.warning('Password yang anda inputkan tidak sama..')

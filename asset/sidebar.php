@@ -12,7 +12,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="https://amzsummits.com/wp-content/uploads/2019/05/Ferry-Vermeulen.jpeg" class="img-circle elevation-2" alt="User Image">
+          <img src="/eFoody2/pages/login/img/'.$data['gambar'].'" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">'.$data['nm_customer'].'</a>

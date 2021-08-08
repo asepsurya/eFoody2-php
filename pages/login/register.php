@@ -30,7 +30,8 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
 <div class="register-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      Mendaftar akun baru
+    <img alt="#" src="../../logo.png" class="img-fluid item-img w-50">
+     
     </div>
     <div class="card-body">
       <form action="action/act_register" method="post">

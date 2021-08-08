@@ -1,6 +1,6 @@
 <!-- extras modal -->
 <div class="modal fade" id="extras" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title"> Keranjang Belanja</h5>
@@ -48,7 +48,7 @@
                 <button type="button" class="btn border-top btn-lg btn-block" data-dismiss="modal">Close</button>
             </div>
             <div class="col-6 m-0 p-0">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Apply</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
             </div>
         </div>
     </div>

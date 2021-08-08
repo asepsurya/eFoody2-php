@@ -20,9 +20,11 @@ if($password == $password2){
           header("location:../register?pesan=sudah_ada");
         }else{
          // jalankan query INSERT untuk menambah data ke database
-        $query = "INSERT INTO tbl_customer VALUES ('$id_customer','$nama','lorem Ipsum','','$telp','$username','$password2','2')";
+        $query = "INSERT INTO tbl_customer VALUES ('$id_customer','$nama','','','$telp','$username','$password2','user-default.jpg')";
         $result = mysqli_query($koneksi, $query);
-        
+        $query2 = "INSERT INTO tbl_user VALUES (NULL,'$id_customer','$username','$password2','2')";
+        $result = mysqli_query($koneksi, $query2);
+
         header("location:../index?pesan=tambah");
         // periska query apakah ada error
         if(!$result){

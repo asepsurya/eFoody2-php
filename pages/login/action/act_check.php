@@ -6,9 +6,9 @@ session_start();
 include '../../../asset/koneksi.php';
 // menangkap data yang dikirim dari form
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = md5($_POST['password']);
 // menyeleksi data admin dengan username dan password yang sesuai
-$data1 = mysqli_query($koneksi,"select * from tbl_customer where email='$username' or no_kontak='$username' and password='$password'");
+$data1 = mysqli_query($koneksi,"select * from tbl_user WHERE username='$username' and password='$password'");
 // menghitung jumlah data yang ditemukan
 $cek = mysqli_num_rows($data1);
 // cek apakah username dan password di temukan pada database

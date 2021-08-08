@@ -6,6 +6,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="en">
 <head>
   <?php session_start() ?>
+  <?php
+  if (empty($_SESSION["username"])) {
+   # code...
+   header("Location:../login/index.php?pesan=invalid");
+  }
+ ?>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Starter</title>
@@ -45,8 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
-        <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light"> <center><img src="../../logo_white.png" alt="AdminLTE Logo" width="150"></span> </center>
       </a>
       <?php include '../../asset/sidebar.php' ?>
     </aside>
