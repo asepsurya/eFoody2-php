@@ -136,16 +136,16 @@
                         <form action="my_account.html">
                             <div class="form-group">
                                 <label for="exampleInputName1">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="exampleInputName1d" value="<?php echo $data['nm_customer'] ?>">
+                                <input type="text" class="form-control" id="exampleInputName1d" value="<?php echo $data['nm_customer'] ?>" name="nama">
                             </div>
                             
                             <div class="form-group">
                                 <label for="exampleInputNumber1">Nomor Telepon</label>
-                                <input type="number" class="form-control" id="exampleInputNumber1" value="<?php echo $data['no_kontak'] ?>">
+                                <input type="number" class="form-control" id="exampleInputNumber1" value="<?php echo $data['no_kontak'] ?>" name="no_kontak">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $data['email'] ?>">
+                                <input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $data['email'] ?>" name="email">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary btn-block">Simpan Perubahan</button>

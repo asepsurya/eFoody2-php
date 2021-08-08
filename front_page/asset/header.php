@@ -1,4 +1,9 @@
 <?php session_start() ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.7/jquery.autocomplete.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <header class="section-header">
     <section class="header-main shadow-sm bg-white">
       <div class="container">
@@ -73,7 +78,7 @@
               <div class="col-10">
             <div class="d-flex align-items-center justify-content-end pr-5">
             <div class="input-group mb-4 widget-header mr-4" style="margin-top: 18px; ">
-            <input type="text" class="form-control form-control-lg input_search border-right-0" id="inlineFormInputGroup" placeholder="Mau Makan Apa Hari ini...?">
+            <input type="text" class="form-control form-control-lg input_search border-right-0" id="inlineFormInputGroup" placeholder="Mau Makan Apa Hari ini...?" id="provinsi">
             <div class="input-group-prepend">
               <div class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></div>
             </div>
@@ -123,7 +128,7 @@
             <div class="d-flex align-items-center justify-content-end pr-5">
               <!-- search -->
             <div class="input-group mb-4 widget-header mr-4" style="margin-top: 20px; ">
-          <input type="text" class="form-control form-control-lg input_search border-right-0" id="inlineFormInputGroup" placeholder="Mau Makan Apa Hari ini...?">
+          <input type="text" class="form-control form-control-lg input_search border-right-0"  placeholder="Mau Makan Apa Hari ini...?" id="nama">
           <div class="input-group-prepend">
             <div class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></div>
           </div>
@@ -153,3 +158,10 @@
     <!-- header-main .// -->
   </header>
   <?php include 'asset/keranjang.php'; ?>
+  <script>
+            $(function() {
+                $("#nama").autocomplete({
+                    source: 'search.php'
+                });
+            });
+        </script>

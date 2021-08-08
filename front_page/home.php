@@ -119,7 +119,7 @@
             </h6>
             <p class="text-gray mb-3">Vegetarian • Indian • Pure veg</p>
             <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="feather-clock"></i> 15–30 min</span></p>
-          </div><b class="mb-10"><label> Rp. 5000 </label></b>
+          </div>
           <div class="list-card-badge">
             <span class="badge badge-danger">OFFER</span> <small> Use Coupon OSAHAN50</small>
           </div>
@@ -217,12 +217,12 @@
           <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
           <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
           <a href="restaurant.html">
-            <img alt="#" src="../pages/data_produk/upload/<?php echo $data['gambar'] ?>" class="img-fluid item-img w-100">
+            <img alt="#" src="../pages/data_produk/upload/<?php echo $data['gambar']; ?>" class="img-fluid item-img w-100">
           </a>
         </div>
         <div class="p-3 position-relative">
           <div class="list-card-body">
-            <h6 class="mb-1"><a href="restaurant.html" class="text-black"><?php echo $data['jenis_produk'] ?>
+            <h6 class="mb-1"><a href="restaurant?id_supplier=<?php echo $data['id_supplier'] ?>" class="text-black"><?php echo $data['jenis_produk'] ?>
             </a>
         </h6>
           <p class="text-gray mb-1 small"><?php echo $data['jenis_kategori'] ?></p>
@@ -241,10 +241,19 @@
           <p></p>
         </div>
         <div class="list-card-badge">
-        <b>Rp. <?php echo $data['harga_produk'] ?> </b><span class="badge badge-danger">IDR</span> 
+        <b>Rp. <?php echo $data['harga_produk'] ;?> </b><span class="badge badge-danger">IDR</span> 
         </div><br>
-        <button type="button" class="btn btn-success btn-block btn-flat">Pesan</button>
-      </div>
+        <?php 
+        $tanggal_transaksi = date("d-m-Y") ;
+        if (empty($_SESSION['username'])){
+          echo'
+          <a href="../pages/login/index"><button type="button" class="btn btn-success btn-block btn-flat">Pesan</button></a>';
+        }else{
+          echo'
+          <a href="home_act/add_cart.php?tanggal='.$tanggal_transaksi.'&id_customer='.$_SESSION['id_customer'].'&id_produk='.$data['id_produk'].'"><button type="button" class="btn btn-success btn-block btn-flat">Pesan</button></a>';
+        }
+        ?>
+        </div>
       
     </div>
   </div>
@@ -681,7 +690,7 @@
         </div>
       </div>
 
-   
+     
       <!-- Bootstrap core JavaScript -->
       <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
       <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -691,6 +700,8 @@
       <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
       <!-- Custom scripts for all pages-->
       <script type="text/javascript" src="js/osahan.js"></script>
+      <script src="/eFoody2/plugins/toastr/toastr.min.js"></script>
+    
     </body>
 
     </html>

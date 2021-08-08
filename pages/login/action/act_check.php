@@ -18,13 +18,15 @@ if($cek > 0){
 	if($data['level']=="1"){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
-		$_SESSION['level'] = "admin";
+		$_SESSION['level'] = "1";
+		$_SESSION['id_customer']=$data['id_customer'];
 		header("location:../../starter?pesan=login_berhasil");
 	    // cek jika user login sebagai pegawai
 	}else if($data['level']=="2"){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
-		$_SESSION['level'] = "pegawai";
+		$_SESSION['level'] = "2";
+		$_SESSION['id_customer']=$data['id_customer'];
 		header("location:../../../front_page/home");
 	    // cek jika user login sebagai pengurus
 	}else if($data['level']=="3"){

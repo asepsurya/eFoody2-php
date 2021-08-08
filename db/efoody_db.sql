@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2021 at 12:50 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Aug 08, 2021 at 02:05 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,17 +35,17 @@ CREATE TABLE `tbl_customer` (
   `no_kontak` varchar(15) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `level` int(2) NOT NULL COMMENT '1=admin 2=pengguna'
+  `gambar` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_customer`
 --
 
-INSERT INTO `tbl_customer` (`id_customer`, `nm_customer`, `alamat_customer`, `kota`, `no_kontak`, `email`, `password`, `level`) VALUES
-(625001, 'Asep Surya Somantri', 'lorem Ipsum', '', '087731402487', 'asepsurya1998@gmail.com', '0938fe42b5ee7cddf56bceddd4ece4ff', 1),
-(625002, 'Deden Suryana', 'lorem Ipsum', '', '081323899376', 'deden2021@gmail.com', '0192023a7bbd73250516f069df18b500', 2),
-(625003, 'ass', 'lorem Ipsum', '', 'sss', 'sss@dasd', '03c7c0ace395d80182db07ae2c30f034', 2);
+INSERT INTO `tbl_customer` (`id_customer`, `nm_customer`, `alamat_customer`, `kota`, `no_kontak`, `email`, `password`, `gambar`) VALUES
+(625001, 'Asep Surya Somantri', '', '', '087731402487', 'asepsurya1998@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'One Ok Rock.jpg'),
+(625002, 'INOPAK INSTITUTE', '', '', '+6285311335205', 'inopakinstitute@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'user-default.jpg'),
+(625003, 'Abang Jali', '', '', '08522144544', 'admin2020@gmail.com', '0192023a7bbd73250516f069df18b500', 'user-default.jpg');
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,8 @@ INSERT INTO `tbl_kategori` (`id_kategori`, `jenis_kategori`, `gambar`) VALUES
 ('K011', 'Burger', 'Burger.png'),
 ('K012', 'Sandwich', 'Sandwich.png'),
 ('K013', 'Coffee', 'Coffee.png'),
-('K014', 'Steak2', 'steak.png');
+('K014', 'Steak', 'steak.png'),
+('K015', 'Rekomendasi Toko', 'logo_web.png');
 
 -- --------------------------------------------------------
 
@@ -87,11 +88,20 @@ INSERT INTO `tbl_kategori` (`id_kategori`, `jenis_kategori`, `gambar`) VALUES
 
 CREATE TABLE `tbl_keranjang_belanja` (
   `id_transaksi` int(11) NOT NULL,
+  `id_customer` varchar(20) NOT NULL,
   `tanggal_transaksi` varchar(20) NOT NULL,
-  `id_barang` int(20) NOT NULL,
-  `harga_produk` int(20) NOT NULL,
-  `catatan` text NOT NULL
+  `id_produk` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_keranjang_belanja`
+--
+
+INSERT INTO `tbl_keranjang_belanja` (`id_transaksi`, `id_customer`, `tanggal_transaksi`, `id_produk`) VALUES
+(4, '625001', '08-08-2021', '62008'),
+(6, '625001', '08-08-2021', '62007'),
+(7, '625001', '08-08-2021', '62007'),
+(8, '625001', '08-08-2021', '62009');
 
 -- --------------------------------------------------------
 
@@ -151,11 +161,15 @@ CREATE TABLE `tbl_produk` (
 --
 
 INSERT INTO `tbl_produk` (`id_produk`, `id_supplier`, `id_kategori`, `jenis_produk`, `harga_produk`, `stok_produk`, `deskripsi`, `gambar`) VALUES
-(62003, 25445446, 'K005', 'Opor Ayam Pedas', 12000, 20, 'Lorem Ipsum Dolor sit amet', 'popular6.png'),
-(62004, 25445445, 'K005', 'Noodles', 50000, 20, '-', 'popular7.png'),
-(62005, 25445445, 'K006', 'Thai Famous Cuisine', 50000, 10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet faucibus cursus. Cras tincidunt quam justo, et sollicitudin sapien cursus a', 'popular8.png'),
-(62006, 25445445, 'K004', 'Paket Hemat', 50000, 12, 'Lrem Ipsum Dolor sit amet', 'popular2.png'),
-(62007, 25445446, 'K002', 'Kwetiaw', 12000, 112, 'Kwetiaw Enak, Lezat dan Nikmat', 'popular5.png');
+(62006, 25002, 'K004', 'Paket Hemat', 50000, 12, 'Lrem Ipsum Dolor sit amet<br>\r\nLrem Ipsum Dolor sit amet', 'popular2.png'),
+(62007, 25001, 'K002', 'Kwetiaw', 12000, 112, 'Kwetiaw Enak, Lezat dan Nikmat', 'popular5.png'),
+(62008, 25001, 'K010', 'Chicken Bumbu Kari', 12000, 20, 'lorem ipsum Dolor lorem ipsum Dolor lorem<br> ipsum Dolor lorem ipsum Dolor', 'trending2.png'),
+(62009, 25001, 'K002', 'Banana Rolls', 12000, 50, 'Banana is the Best Product, ', 'trending3.png'),
+(62010, 25001, 'K011', 'Japanese Beef Burger', 10000, 2, 'Don’t forget to change the file’s path if you downloaded summernote in a different folders.<br>\r\n\r\nYou can however, and a lot of developers do these days, is include the stylesheet’s within the head are of your page, and include the Javascript at the bottom of your page, but before the closing body tag.', 'popular2.png'),
+(62011, 25001, 'K002', 'Lotek Big Jumbo', 15000, 10, 'Lotek Lezat dengan Bumbu Khas turun temurun ,Masakan Home Made yang <br>dilengkapi dengan Bumbu rempah Pilihan', 'trending2.png'),
+(62012, 25001, 'K008', 'Pete Khas Jawa', 5000, 20, '-', 'trending1.png'),
+(62013, 25003, 'K006', 'Nugget ', 12000, 20, 'Nuget Murah', 'popular7.png'),
+(62014, 25001, 'K002', 'Potato Delife', 5000, 10, '-', 'popular3.png');
 
 -- --------------------------------------------------------
 
@@ -167,16 +181,19 @@ CREATE TABLE `tbl_supplier` (
   `id_supplier` int(11) NOT NULL,
   `nama_supplier` varchar(30) NOT NULL,
   `alamat` text NOT NULL,
-  `no_telp_supplier` int(13) NOT NULL
+  `no_telp_supplier` varchar(30) NOT NULL,
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_supplier`
 --
 
-INSERT INTO `tbl_supplier` (`id_supplier`, `nama_supplier`, `alamat`, `no_telp_supplier`) VALUES
-(25445445, 'PT. INDOFOOD', 'tasikmalaya', 854421144),
-(25445446, 'PT. INDO Barista', 'tasikmalaya', 854421144);
+INSERT INTO `tbl_supplier` (`id_supplier`, `nama_supplier`, `alamat`, `no_telp_supplier`, `email`) VALUES
+(25001, 'Toko Sendiri', 'Jl.Mangkoko No.40', '087731402487', 'inopakinstitute@gmail.com'),
+(25002, 'Lazatto', 'Jl. Krendang Raya No.21, RT.7/RW.12, Krendang, <br> Kec. Tambora, Kota Jakarta Barat,', '085311335205', 'supportlazato@mail.id'),
+(25003, 'KFC Cabang Tasikmalaya', 'Jl. KHZ. Mustofa No.326, Tugujaya, Kec. Cihideung,', '085224556885', 'supportkf@gmail.com'),
+(25004, 'Mc Donnals2', 'Jl. Pancasila No. 3 Gedung Hamas Lt.Dasar', '085311335205', 'inopakinstitute@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -188,15 +205,18 @@ CREATE TABLE `tbl_user` (
   `id_user` int(11) NOT NULL,
   `id_customer` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(50) NOT NULL COMMENT 'password Type MD5'
+  `password` varchar(50) NOT NULL COMMENT 'password Type MD5',
+  `level` int(10) NOT NULL COMMENT '1. admin 2.user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id_user`, `id_customer`, `username`, `password`) VALUES
-(1, 112231, 'admin', '21232f297a57a5a743894a0e4a801fc3');
+INSERT INTO `tbl_user` (`id_user`, `id_customer`, `username`, `password`, `level`) VALUES
+(1, 625001, 'asepsurya1998@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 1),
+(2, 625002, 'inopakinstitute@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 2),
+(3, 625003, 'admin2020@gmail.com', '0192023a7bbd73250516f069df18b500', 2);
 
 --
 -- Indexes for dumped tables
@@ -213,6 +233,12 @@ ALTER TABLE `tbl_customer`
 --
 ALTER TABLE `tbl_kategori`
   ADD PRIMARY KEY (`id_kategori`);
+
+--
+-- Indexes for table `tbl_keranjang_belanja`
+--
+ALTER TABLE `tbl_keranjang_belanja`
+  ADD PRIMARY KEY (`id_transaksi`);
 
 --
 -- Indexes for table `tbl_pesanan`
@@ -246,10 +272,16 @@ ALTER TABLE `tbl_user`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_keranjang_belanja`
+--
+ALTER TABLE `tbl_keranjang_belanja`
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
