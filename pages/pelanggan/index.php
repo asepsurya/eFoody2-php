@@ -98,8 +98,8 @@ echo'
                     <tr data-widget="expandable-table" aria-expanded="false">
                     <td>
                     <div class="btn-group ">
-                       <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit'.$row['id_customer'].'">Edit</button>
-                      <a href="action/act_delete_produk.php?id_kategori='.$row['id_customer'].'"> <button type="button" class="btn btn-default btn-sm"><i class=" nav-ico fas fa-trash"></i></button></a>
+                       <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit-modal'.$row['id_customer'].'">Edit</button>
+                      <a href="action/act_delete_pelanggan.php?id_pelanggan='.$row['id_customer'].'"> <button type="button" class="btn btn-default btn-sm"><i class=" nav-ico fas fa-trash"></i></button></a>
                        
                      </div>
                    </td>
@@ -182,14 +182,23 @@ echo'
         </button>
       </div>
       <div class="modal-body">
-      <form action="action/act_input_supplier.php" method="POST">
+      <form action="action/act_input_pelanggan.php" method="POST">
         <div class="form-group">
+          <?php
+$query = mysqli_query($koneksi, "SELECT max(id_customer) as kodeTerbesar FROM tbl_customer");
+$data = mysqli_fetch_array($query);
+$kodeBarang = $data['kodeTerbesar'];
+$urutan = (int) substr($kodeBarang, 3, 3);
+$urutan++;
+$huruf = "625";
+$kodeBarang = $huruf . sprintf("%03s", $urutan);
+?>
           <label> ID </label>
-          <input type="text" class="form-control form-control-border" readOnly name="id_supplier" placeholder="ID Pelanggan" required value="<?php ?>">
+          <input type="text" class="form-control form-control-border" readOnly name="id_pelanggan" placeholder="ID Pelanggan" required value="<?php echo $kodeBarang ?>">
         </div>
         <div class="form-group">
           <label> Nama Lengkap</label>
-          <input type="text" class="form-control form-control-border" name="nm_supplier" placeholder="Nama Lengkap" required>
+          <input type="text" class="form-control form-control-border" name="nm_pelanggan" placeholder="Nama Lengkap" required>
         </div>
         <div class="form-group">
           <label>Alamat Lengkap</label>
@@ -207,16 +216,80 @@ echo'
                     <span class="input-group-text"><i class="fas fa-phone"></i></span>
                   </div>
                   <input type="number" class="form-control" placeholder="Nomor Telepon" name="telp" required>
-                </div>
+                </div><br>
+                <div class="form-group">
+                  <label>Level </label>
+                  <select class="form-control" name="level">
+                    <option value="1">01. Admin</option>
+                    <option value="2">02. konsumen</option>
+                  </select>
+        </div>
       </div>
       
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary btn-block">Save changes</button>
+        <button type="submit" class="btn btn-primary btn-block">Simpan Data</button>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<?php
+$myquery2 = "SELECT * FROM tbl_customer";
+$myresult2 = mysqli_query($koneksi, $myquery2);
+while($row2 = mysqli_fetch_assoc($myresult2)){?>
+<div class="modal fade" id="edit-modal<?php echo $row2['id_customer'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Form Edit Data </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="action/act_edit_pelanggan.php" method="POST">
+        <div class="form-group">
+          <label> ID </label>
+          <input type="text" class="form-control form-control-border" readOnly name="id_pelanggan" placeholder="ID Pelanggan" required value="<?php echo $row2['id_customer'] ?>">
+        </div>
+        <div class="form-group">
+          <label> Nama Lengkap</label>
+          <input type="text" class="form-control form-control-border" name="nm_pelanggan" placeholder="Nama Lengkap" required value="<?php echo $row2['nm_customer'] ?>">
+        </div>
+        <div class="form-group">
+          <label>Alamat Lengkap</label>
+          <textarea type="text" class="form-control" name="alamat" placeholder="Alamat Lengkap" required><?php echo $row2['alamat_customer'] ?></textarea>
+        </div>
+        <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                  </div>
+                  <input type="email" class="form-control" placeholder="Email" name="email" required value="<?php echo $row2['email'] ?>">
+                </div>
+                <br>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                  </div>
+                  <input type="number" class="form-control" placeholder="Nomor Telepon" name="telp" required value="<?php echo $row2['no_kontak'] ?>">
+                </div><br>
+                <div class="form-group">
+                  <label>Level </label>
+                  <select class="form-control" name="level">
+                    <option value="1">01. Admin</option>
+                    <option value="2">02. konsumen</option>
+                  </select>
+        </div>
+      </div> 
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-block">Simpan Data</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<?php } ?>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
