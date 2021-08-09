@@ -19,6 +19,8 @@
   <link href="css/style.css" rel="stylesheet">
   <!-- Sidebar CSS -->
   <link href="vendor/sidebar/demo.css" rel="stylesheet">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
 </head>
 
 <body class="fixed-bottom-bar">
@@ -196,6 +198,9 @@
     </div>
   </div>
 </div>
+
+<center><img src="img/a.jpg" width="500" class="img-fluid item-img w-100 rounded overflow-hidden" >  </center>
+
 <!-- Most popular -->
 <div class="py-3 title d-flex align-items-center">
   <h5 class="m-0">Rekomendasi</h5>
@@ -700,8 +705,8 @@
       <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
       <!-- Custom scripts for all pages-->
       <script type="text/javascript" src="js/osahan.js"></script>
-      <script src="/eFoody2/plugins/toastr/toastr.min.js"></script>
-    
+      <script src="plugins/toastr/toastr.min.js"></script>
+<?php include '../asset/alert.php' ?>
     </body>
 
     </html>

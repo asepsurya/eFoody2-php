@@ -15,6 +15,39 @@
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
+  <style>
+       
+ 
+    #progressBar {
+      height: 20px;
+      width: 100%;
+      margin-top: 0.6em;
+      border-radius:50px;
+      border:2px solid #ddd
+    }
+ 
+    #progress-bar {
+      width: 0%;
+      height: 100%;
+      transition: width 500ms linear;
+      border-radius:50px;
+      box-shadow:0px 1px 5px #555
+    }
+ 
+    .progress-bar-danger {
+      background: #d00;
+    }
+ 
+    .progress-bar-warning {
+      background: #f50;
+    }
+ 
+    .progress-bar-success {
+      background: #080;
+    }
+ 
+</style>
+
 </head>
 <?php
 include '../../asset/koneksi.php';
@@ -61,13 +94,14 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password" onchange="generateStrongPassword()">
+          <input type="password" class="form-control" id="pwd" placeholder="Password" name="password" onchange="generateStrongPassword()">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
+        
         <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="Masukan Ulang password" name="password2">
           <div class="input-group-append">
@@ -76,6 +110,12 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
             </div>
           </div>
         </div>
+        <div class="form-group">
+        <small class="tx-grey"> Kekuatan password : </small>
+        <div  class="progress progress-xs progress-striped ">
+      <div id="progress-bar"></div>
+        </div>
+  </div>
         <div class="row">
           <div class="col-9">
             <div class="icheck-primary">
@@ -154,5 +194,46 @@ function generateStrongPassword($length = 9, $add_dashes = false, $available_set
 	return $dash_str;
 }
 ?>
+ <script>
+jQuery.strength = function( element, password ) {
+        var desc = [{'width':'0px'}, {'width':'20%'}, {'width':'40%'}, {'width':'60%'}, {'width':'80%'}, {'width':'100%'}];
+        var descClass = ['', 'progress-bar-danger', 'progress-bar-danger', 'progress-bar-warning', 'progress-bar-success', 'progress-bar-success'];
+        var score = 0;
+ 
+        //Jika Password Lebih Dari 6 Karakter Tambah Skor
+        if(password.length > 6){ 
+            score++;
+        }
+ 
+        //Jika Password Terdapat Huruf Kecil dan Besar Tambah Skor
+        if ((password.match(/[a-z]/)) && (password.match(/[A-Z]/))){ 
+            score++;
+        }
+ 
+         
+        //Jika Password Terdiri dari Angka
+        if(password.match(/\d+/)){
+            score++;
+        }
+         
+        //Jika Password Terdapat Simbol
+        if(password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)){
+            score++;
+        }
+ 
+        //Jika Password Lebih dari 10 Karakter  
+        if (password.length > 10){
+            score++;
+        }
+ 
+        element.removeClass( descClass[score-1] ).addClass( descClass[score] ).css( desc[score] );
+    };
+ 
+jQuery(function() {
+  jQuery("#pwd").keyup(function() {
+                    jQuery.strength(jQuery("#progress-bar"), jQuery(this).val());
+                });
+});
+</script> 
 </body>
 </html>

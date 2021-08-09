@@ -40,6 +40,7 @@
         </div>
     </div>
     <?php
+    $username=$_SESSION['username'];
     $query = "SELECT * FROM tbl_customer where email='$username'";
     $result = mysqli_query($koneksi, $query);
     $data = mysqli_fetch_assoc($result);
@@ -133,10 +134,12 @@
                 <h5 class="mb-4">My account</h5>
                 <div id="edit_profile">
                     <div>
-                        <form action="my_account.html">
+                        <?php $id_customer=$_SESSION['id_customer']; ?>
+                        <form action="profile_act/act_update_pelanggan.php" method="POST">
                             <div class="form-group">
                                 <label for="exampleInputName1">Nama Lengkap</label>
                                 <input type="text" class="form-control" id="exampleInputName1d" value="<?php echo $data['nm_customer'] ?>" name="nama">
+                                <input type="text" class="form-control" id="exampleInputName1d" hidden value="<?php echo $id_customer ?>" name="id_pelanggan">
                             </div>
                             
                             <div class="form-group">

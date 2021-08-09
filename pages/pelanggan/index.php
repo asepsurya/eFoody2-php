@@ -95,10 +95,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </tr>
                   </thead>
                   <tbody>
-                  <?php           
-$myquery = "SELECT * FROM tbl_customer";
+                  <?php  
+                  $no=0;        
+                  $username=$_SESSION['username']; 
+$myquery = "SELECT * FROM tbl_customer ";
 $myresult = mysqli_query($koneksi, $myquery);
 while($row = mysqli_fetch_assoc($myresult)){
+  $no++;
 echo'
                     <tr data-widget="expandable-table" aria-expanded="false">
                     <td>
@@ -129,8 +132,8 @@ echo'
                               <thead>
                                 <tr>
                                   <th style="width: 10px">#</th>
-                                  <th style="width: 100px">ID Supplier</th>
-                                  <th style="width: 200px">Nama Supplier</th>
+                                  <th style="width: 100px">Foto</th>
+                                  <th style="width: 200px">Alamat Lengkap</th>
                                   
                                   <th style="width: 150px">Jenis Kategori </th>
                                   <th style="width: 100px">Foto</th>
@@ -139,8 +142,8 @@ echo'
                               </thead>
                               <tbody>
                               <tr>
-                                <td>$nomor </td>
-                                <td>$id_supplier</td>
+                                <td>'.$no.'</td>
+                                <td><img src="../login/img/'.$row['gambar'].'" width="100"></td>
                                 <td>$supplier</td>
       
                               <td>$kategori</td>

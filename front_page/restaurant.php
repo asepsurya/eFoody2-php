@@ -39,7 +39,7 @@
     ?>
     <div class="offer-section py-4">
         <div class="container position-relative">
-            <img alt="#" src="img/trending1.png" class="restaurant-pic">
+            <img alt="#" src="img/lazato logo.png" class="restaurant-pic">
             <div class="pt-3 text-white">
                 <h2 class="font-weight-bold"><?php echo $data['nama_supplier'] ?></h2>
                 <p class="text-white m-0"><?php echo $data['alamat'] ?></p>

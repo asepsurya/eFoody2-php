@@ -45,8 +45,11 @@
                                 
                                 <div class="d-flex align-items-center">
                                     <div class="ml-auto">
-                                        <span class="count-number"><button type="button" class="btn-sm left dec btn btn-outline-secondary"> <i class="feather-minus"></i> </button><input class="count-number-input" type="text" readonly="" value="1"><button type="button" class="btn-sm right inc btn btn-outline-secondary"> <i class="feather-plus"></i> </button></span>
-                                    </div>
+                                    <div class="text-muted m-0 ml-auto mr-3 small">Qty :<br>
+                                    <Input type="number" class="form-control w-50 sm" value="1">
+                                </div>
+                                       
+                                        </div>
                                 </div>
                                 <div class="text-muted m-0 ml-auto mr-3 small">Harga<br>
                                     <span class="text-dark font-weight-bold">Rp.<?php echo $data2['harga_produk'] ?></span>

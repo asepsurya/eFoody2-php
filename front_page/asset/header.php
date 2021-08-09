@@ -106,15 +106,19 @@
             if (isset($_SESSION['username'])){
               echo'
               <div class="col-10">
+              <form autocomplete="off" action="/action_page.php">
             <div class="d-flex align-items-center justify-content-end pr-5">
-            <div class="input-group mb-4 widget-header mr-4" style="margin-top: 18px; ">
-            <input type="text" class="form-control form-control-lg input_search border-right-0" id="inlineFormInputGroup" placeholder="Mau Makan Apa Hari ini...?" id="provinsi">
-            <div class="input-group-prepend">
-              <div class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></div>
-            </div>
-          </div><a href="" class="widget-header mr-4 text-dark"data-toggle="modal" data-target="#extras" >
+              <!-- search -->  
+            <div class="input-group mb-4 widget-header mr-4" style="margin-top: 20px; ">
+          <input type="text" class="form-control form-control-lg input_search border-right-0"  placeholder="Mau Makan Apa Hari ini...?" id="myInput">
+          <div class="input-group-prepend">
+            <div class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></div>
+          </div>
+        </div>
+            </form>
+          <a href="" class="widget-header mr-4 text-dark"data-toggle="modal" data-target="#extras" >
           <div class="icon d-flex align-items-center">
-              <i class="feather-shopping-cart h6 mr-2 mb-0"></i> <span>Cart</span>
+              <i class="feather-shopping-cart h6 mr-2 mb-0"></i> <span class="badge badge-danger navbar-badge">3</span>
           </div>
       </a>
 
@@ -157,11 +161,9 @@
           <div class="col-10">
           <form autocomplete="off" action="/action_page.php">
             <div class="d-flex align-items-center justify-content-end pr-5">
-              <!-- search -->
-              
+              <!-- search -->  
             <div class="input-group mb-4 widget-header mr-4" style="margin-top: 20px; ">
           <input type="text" class="form-control form-control-lg input_search border-right-0"  placeholder="Mau Makan Apa Hari ini...?" id="myInput">
-            
           <div class="input-group-prepend">
             <div class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></div>
           </div>
