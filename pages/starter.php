@@ -70,9 +70,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <h5><i class="far fa-smile-wink"></i> <b>Hello</b> '.$data['nm_customer'].'</h5>
   ';
   ?>
-                  <p>There is a problem that we need to fix. A wonderful serenity has taken possession of my entire
-                    soul,
-                    like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                  <p># eFoody2(Electronic Food Delivery)
+merupakan layanan pesan antar online di aplikasi eFoody. Mitra Usaha yang sudah terdaftar layananr eFoody akan menerima pesanan GoFood di halam dashboard aplikasi dan berkesempatan untuk meningkatkan penjualan dengan memperluas jangkauan usaha ke pengguna </p>
                 </div>
     <div class="row">
           <div class="col-md-3 col-sm-6 col-12">
