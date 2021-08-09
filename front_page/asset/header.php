@@ -38,20 +38,23 @@
     <section class="header-main shadow-sm bg-white">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-1">
+          <div class="col-2">
             <a href="/eFoody2/front_page/home" class="brand-wrap mb-0">
             <img src="../logo.png" alt="eFoody" width="150">
             </a>
             <!-- brand-wrap.// -->
           </div>
           
-          <div class="col-1 d-flex align-items-center m-none">
-              <!--
-            <div class="dropdown mr-3">
+          
+          <?php 
+            if (isset($_SESSION['username'])){
+              echo'
+              <div class="col-2 align-items-center m-none">
+          <div class="dropdown mr-3">
               <a class="text-dark dropdown-toggle d-flex align-items-center py-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div><i class="feather-map-pin mr-2 bg-light rounded-pill p-2 icofont-size"></i></div>
                 <div>
-                  <p class="text-muted mb-0 small">Select Location</p>
+                  <p class="text-muted mb-0 small">Lokasi saat ini</p>
                   Jawaddi Ludhiana...
                 </div>
               </a>
@@ -65,47 +68,27 @@
                       <input type="text" class="shadow-none border-0 form-control" placeholder="Enter Your Location">
                     </div>
                   </div>
-                  <div class="p-3 border-bottom">
-                    <a href="home.html" class="text-decoration-none">
-                      <p class="font-weight-bold text-primary m-0"><i class="feather-navigation"></i> New York, USA</p>
-                    </a>
-                  </div>
                   <div class="filter">
-                    <h6 class="px-3 py-3 bg-light pb-1 m-0 border-bottom">Choose your country</h6>
+                    <h6 class="px-3 py-3 bg-light pb-1 m-0 border-bottom"> Rumah</h6>
                     <div class="custom-control  border-bottom px-0 custom-radio">
                       <input type="radio" id="customRadio1" name="location" class="custom-control-input">
-                      <label class="custom-control-label py-3 w-100 px-3" for="customRadio1">Afghanistan</label>
+                      <label class="custom-control-label py-3 w-100 px-3" for="customRadio1">Jl. Krendang Raya No.21, RT.7/RW.12, Krendang,
+                      Kec. Tambora, Kota Jakarta Barat,</label>
                     </div>
+                    <h6 class="px-3 py-3 bg-light pb-1 m-0 border-bottom"> Kantor</h6>
                     <div class="custom-control  border-bottom px-0 custom-radio">
                       <input type="radio" id="customRadio2" name="location" class="custom-control-input" checked="">
-                      <label class="custom-control-label py-3 w-100 px-3" for="customRadio2">India</label>
+                      <label class="custom-control-label py-3 w-100 px-3" for="customRadio2">Jl. Krendang Raya No.21, RT.7/RW.12, Krendang, Kec. Tambora, Kota Jakarta Barat,</label>
                     </div>
-                    <div class="custom-control  border-bottom px-0 custom-radio">
-                      <input type="radio" id="customRadio3" name="location" class="custom-control-input">
-                      <label class="custom-control-label py-3 w-100 px-3" for="customRadio3">USA</label>
-                    </div>
-                    <div class="custom-control  border-bottom px-0 custom-radio">
-                      <input type="radio" id="customRadio4" name="location" class="custom-control-input">
-                      <label class="custom-control-label py-3 w-100 px-3" for="customRadio4">Australia</label>
-                    </div>
-                    <div class="custom-control  border-bottom px-0 custom-radio">
-                      <input type="radio" id="customRadio5" name="location" class="custom-control-input">
-                      <label class="custom-control-label py-3 w-100 px-3" for="customRadio5">Japan</label>
-                    </div>
-                    <div class="custom-control  px-0 custom-radio">
-                      <input type="radio" id="customRadio6" name="location" class="custom-control-input">
-                      <label class="custom-control-label py-3 w-100 px-3" for="customRadio6">China</label>
-                    </div>
+                    
                   </div>
                 </div>
               </div>
-            </div
-      -->      
+</div>
+            
+        
           </div>
-          <?php 
-            if (isset($_SESSION['username'])){
-              echo'
-              <div class="col-10">
+              <div class="col-8">
               <form autocomplete="off" action="/action_page.php">
             <div class="d-flex align-items-center justify-content-end pr-5">
               <!-- search -->  
@@ -118,15 +101,11 @@
             </form>
           <a href="" class="widget-header mr-4 text-dark"data-toggle="modal" data-target="#extras" >
           <div class="icon d-flex align-items-center">
-              <i class="feather-shopping-cart h6 mr-2 mb-0"></i> <span class="badge badge-danger navbar-badge">3</span>
+              <i class="feather-shopping-cart h6 mr-2 mb-0"></i>
           </div>
       </a>
 
-          <a href="/eFoody2/pages/login/index" class="widget-header mr-4 text-white btn bg-primary m-none">
-          <div class="icon d-flex align-items-center">
-            <i class="feather-user h6 mr-2 mb-0"></i> <span>Trending</span>
-          </div>
-        </a>';
+       ';
     include '../asset/koneksi.php';
     $username = $_SESSION['username'];
     $query = "SELECT * FROM tbl_customer where email='$username'";

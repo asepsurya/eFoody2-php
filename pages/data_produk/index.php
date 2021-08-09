@@ -108,7 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <th>Jenis Produk</th>
                       <th>Harga Produk <span class="badge bg-primary">Rp</span></th>
                       <th>Stok Produk <span class="badge bg-warning">Pcs</span></th>
-                      <th></th>
+                      <th>Status Barang</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -129,7 +129,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td>'.$data['jenis_produk'].'</td>
                       <td>'.$data['harga_produk'].'</td>
                       <td>'.$data['stok_produk'].'</td>
-                      <td></td>
+                      <td><span class="badge rounded-pill bg-success">Tersedia</span></td>
                     </tr>
                     <tr class="expandable-body">
                     <div class="card-body table-responsive p-0">
