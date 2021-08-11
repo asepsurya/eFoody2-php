@@ -49,64 +49,28 @@
           <?php 
             if (isset($_SESSION['username'])){
               echo'
-              <div class="col-2 align-items-center m-none">
-          <div class="dropdown mr-3">
-              <a class="text-dark dropdown-toggle d-flex align-items-center py-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div><i class="feather-map-pin mr-2 bg-light rounded-pill p-2 icofont-size"></i></div>
-                <div>
-                  <p class="text-muted mb-0 small">Lokasi saat ini</p>
-                  Jawaddi Ludhiana...
-                </div>
-              </a>
-              <div class="dropdown-menu p-0 drop-loc" aria-labelledby="navbarDropdown">
-                <div class="osahan-country">
-                  <div class="search_location bg-primary p-3 text-right">
-                    <div class="input-group rounded shadow-sm overflow-hidden">
-                      <div class="input-group-prepend">
-                        <button class="border-0 btn btn-outline-secondary text-dark bg-white btn-block"><i class="feather-search"></i></button>
-                      </div>
-                      <input type="text" class="shadow-none border-0 form-control" placeholder="Enter Your Location">
-                    </div>
-                  </div>
-                  <div class="filter">
-                    <h6 class="px-3 py-3 bg-light pb-1 m-0 border-bottom"> Rumah</h6>
-                    <div class="custom-control  border-bottom px-0 custom-radio">
-                      <input type="radio" id="customRadio1" name="location" class="custom-control-input">
-                      <label class="custom-control-label py-3 w-100 px-3" for="customRadio1">Jl. Krendang Raya No.21, RT.7/RW.12, Krendang,
-                      Kec. Tambora, Kota Jakarta Barat,</label>
-                    </div>
-                    <h6 class="px-3 py-3 bg-light pb-1 m-0 border-bottom"> Kantor</h6>
-                    <div class="custom-control  border-bottom px-0 custom-radio">
-                      <input type="radio" id="customRadio2" name="location" class="custom-control-input" checked="">
-                      <label class="custom-control-label py-3 w-100 px-3" for="customRadio2">Jl. Krendang Raya No.21, RT.7/RW.12, Krendang, Kec. Tambora, Kota Jakarta Barat,</label>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-</div>
-            
-        
-          </div>
-              <div class="col-8">
-              <form autocomplete="off" action="/action_page.php">
+           
+              <div class="col-10">
+              <form autocomplete="off" action="cari_produk.php">
             <div class="d-flex align-items-center justify-content-end pr-5">
               <!-- search -->  
             <div class="input-group mb-4 widget-header mr-4" style="margin-top: 20px; ">
-          <input type="text" class="form-control form-control-lg input_search border-right-0"  placeholder="Mau Makan Apa Hari ini...?" id="myInput">
+          <input type="text" class="form-control form-control-lg input_search border-right-0"  placeholder="Mau Makan Apa Hari ini...?" id="myInput" name="kata_kunci">
           <div class="input-group-prepend">
-            <div class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></div>
+            <button type="submit" class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></button>
           </div>
         </div>
-            </form>
+        </form>
           <a href="" class="widget-header mr-4 text-dark"data-toggle="modal" data-target="#extras" >
           <div class="icon d-flex align-items-center">
               <i class="feather-shopping-cart h6 mr-2 mb-0"></i>
           </div>
       </a>
-
+</form>
        ';
+       
     include '../asset/koneksi.php';
+    
     $username = $_SESSION['username'];
     $query = "SELECT * FROM tbl_customer where email='$username'";
     $result = mysqli_query($koneksi, $query);
@@ -119,10 +83,7 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="profile.php">My account</a>
-                    <a class="dropdown-item" href="faq.html">Delivery support</a>
-                    <a class="dropdown-item" href="contact-us.html">Contant us</a>
-                    <a class="dropdown-item" href="terms.html">Term of use</a>
-                    <a class="dropdown-item" href="privacy.html">Privacy policy</a>
+                    
                     <a class="dropdown-item" href="/eFoody2/pages/login/logout">Logout</a>
                   </div>
                 </div>

@@ -34,12 +34,7 @@
     <!-- Most popular -->
     <div class="container">
       <div class="search py-5">
-        <div class="input-group mb-4">
-          <input type="text" class="form-control form-control-lg input_search border-right-0" id="inlineFormInputGroup" value="Osahan eats...">
-          <div class="input-group-prepend">
-            <div class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></div>
-          </div>
-        </div>
+        
         <!-- nav tabs -->
         <?php
         $id_kategori=$_GET['id_kategori'];
@@ -117,7 +112,16 @@
               <div class="list-card-badge">
                 Rp. <?php echo $data['harga_produk'] ?> <span class="badge badge-danger">IDR</span> 
               </div><br>
-              <button type="button" class="btn btn-success btn-block">Pesan</button>
+              <?php 
+        $tanggal_transaksi = date("d-m-Y") ;
+        if (empty($_SESSION['username'])){
+          echo'
+          <a href="../pages/login/index"><button type="button" class="btn btn-success btn-block btn-flat">Pesan</button></a>';
+        }else{
+          echo'
+          <a href="home_act/add_cart.php?tanggal='.$tanggal_transaksi.'&id_customer='.$_SESSION['id_customer'].'&id_produk='.$data['id_produk'].'&nama_produk='.$data['jenis_produk'].'&harga='.$data['harga_produk'].'"><button type="button" class="btn btn-success btn-block btn-flat">Pesan</button></a>';
+        }
+        ?>
             </div>
             
           </div>

@@ -11,6 +11,7 @@ $stok =$_POST['stok'];
 $deskripsi= $_POST ['deskripsi'];
 $kategori= $_POST ['kategori'];
 $id_produk=$_POST ['id_produk'];
+$status=$_POST['status'];
 
 	$namafile = $_FILES['foto']['name'];
 	$tmp = $_FILES['foto']['tmp_name'];
@@ -21,7 +22,7 @@ $id_produk=$_POST ['id_produk'];
 	}else{	
 			move_uploaded_file($tmp, '../upload/'.$namafile);
 			$x = $namafile;
-			mysqli_query($koneksi,"INSERT INTO tbl_produk VALUES('$id_produk','$id_supplier','$kategori','$nama_produk','$harga','$stok','$deskripsi','$x')");
+			mysqli_query($koneksi,"INSERT INTO tbl_produk VALUES('$id_produk','$id_supplier','$kategori','$nama_produk','$harga','$stok','$deskripsi','$x','$status')");
 			header("location:../index?pesan=tambah");
 		
 	}

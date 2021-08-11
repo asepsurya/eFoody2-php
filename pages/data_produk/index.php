@@ -107,7 +107,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <th>ID</th>
                       <th>Jenis Produk</th>
                       <th>Harga Produk <span class="badge bg-primary">Rp</span></th>
-                      <th>Stok Produk <span class="badge bg-warning">Pcs</span></th>
+                      <th>Kategori Produk</th>
                       <th>Status Barang</th>
                     </tr>
                   </thead>
@@ -127,9 +127,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       </div></td>
                       <td>'.$data['id_produk'].'</td>
                       <td>'.$data['jenis_produk'].'</td>
-                      <td>'.$data['harga_produk'].'</td>
-                      <td>'.$data['stok_produk'].'</td>
-                      <td><span class="badge rounded-pill bg-success">Tersedia</span></td>
+                      <td>'.$data['harga_produk'].'</td>';
+                      $id_kategori= $data['id_kategori'];
+                      $nomor=0;
+                      $query3 = "SELECT * FROM tbl_kategori where id_kategori='$id_kategori'";
+                      $result2 = mysqli_query($koneksi, $query3);
+                      while($myrow = mysqli_fetch_assoc($result2)){
+                      $nomor++;
+                      $kategori = $myrow['jenis_kategori'];
+                    }
+                    echo'
+                    <td>'.$kategori.'</td>
+                      <td>';
+                      if($data['status']=="1"){
+                        echo' <center><span class="badge rounded-pill bg-success">
+                        Tersedia</span></center></td>';
+                      }else{
+                        echo'<center><span class="badge rounded-pill bg-danger">
+                        Belum Tersedia</span></center></td>';
+                      }
+                    echo'  
                     </tr>
                     <tr class="expandable-body">
                     <div class="card-body table-responsive p-0">
@@ -148,9 +165,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                   <th style="width: 100px">ID Supplier</th>
                                   <th style="width: 200px">Nama Supplier</th>
                                   
-                                  <th style="width: 150px">Jenis Kategori </th>
+                                  <th>Stok Produk <span class="badge bg-warning">Pcs</span></th>
                                   <th style="width: 100px">Foto</th>
-                                  <th>Deskripsi </th>
+                                  <th></th>
                                 </tr>
                               </thead>
                               <tbody>';
@@ -166,29 +183,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <tr>
                                 <td>'.$nomor.'. </td>
                                 <td>'.$id_supplier.'</td>
-                                <td>'.$supplier.'</td>';
-                                
+                                <td>'.$supplier.'</td>
+                                <td>'.$data['stok_produk'].'</td>';
 
-                                $id_kategori= $data['id_kategori'];
-                                $nomor=0;
-                                $query3 = "SELECT * FROM tbl_kategori where id_kategori='$id_kategori'";
-                                $result2 = mysqli_query($koneksi, $query3);
-                                while($myrow = mysqli_fetch_assoc($result2)){
-                                $nomor++;
-                                $kategori = $myrow['jenis_kategori'];
-                              }
-                              echo'
-                              <td>'.$kategori.'</td>
+                               echo'
                               <td>
                                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#a'.$id_produk.'">
                                  Gambar
                                </button>
                              </td>
-                             <td style="width: 100px">'.$data['deskripsi'].'</td>
+                             <td style="width: 100px"></td>
                            </tr>
-                           
+                           <tr class="expandable-body">
+                           <td colspan="6" class="col-1">
+                           <br>
+                           <b>Keterangan Produk :</b><br>
+                          <textarea class="form-control " readonly> '.$data['deskripsi'].' </textarea>
+                           </td>
+                           </tr>
                          </tbody>
                        </table>
+                     
                      </div>
                      <!-- /.card-body -->
                    </div>
@@ -278,10 +293,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </select>
                 </div>
                 <!-- /.form-group -->
-                <div class="form-group">
+          
+            <div class="card  ">
+              <div class="card-header p-0 pt-1 border-bottom-0">
+                <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Strok</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Status</a>
+                  </li>
+             
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content" id="custom-tabs-three-tabContent">
+                  <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+                  <div class="form-group">
                   <label> Jumlah Stok </label>
-                  <input type="text"class="form-control" name="stok" required>
+                  <input type="number"class="form-control" name="stok" required value="0">
+                </div>     
                 </div>
+                  <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+                  <div class="form-group">
+                  <label>Status Ketersediaan</label>
+                  <select class="form-control" name="status">
+                    <option value="1"> Tersedia </option>
+                    <option value="0"> Belum Tersedia </option>
+                  </select>
+                </div>
+                </div>
+                 
+                </div>
+              </div>
+              <!-- /.card -->
+                  </div>
+               
               </div>
               <!-- /.col -->
               <div class="col-md-6">
@@ -392,12 +439,28 @@ while($data1 = mysqli_fetch_assoc($result1)){
                     ?>
                   </select>
                 </div>
-                <!-- /.form-group -->
-                <div class="form-group">
-                  <label> Jumlah Stok </label>
-                  <input type="text"class="form-control" name="stok" value="<?php echo $data1['stok_produk'] ?>">
-                </div>
-              </div>
+               <div class="form-group ">
+                 <label>Stok</label>
+                 <input type="text" class="form-control" name="stok" value="<?= $data1['stok_produk'] ?>">
+                  </div>
+                  <div class="form-group ">
+                 <label>Status Ketersediaan</label>
+                 <select name="status" class="form-control">
+                   <?php
+                   if($data1['status']=="1"){
+                     echo'
+                    <option selected>Tersedia </option>'; 
+                   }else{
+                     echo'
+                    <option selected>Belum Tersedia </option>'; 
+                   }
+                   ?>     
+                   <option value="1"> Tersedia</option>
+                   <option value="2"> Belum terserdia </option>
+                  </select>
+                  </div>
+                  </div>
+               
               <!-- /.col -->
               <div class="col-md-6">
                 <div class="form-group">

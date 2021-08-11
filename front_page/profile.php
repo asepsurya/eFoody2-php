@@ -67,18 +67,10 @@
                 </div>
                 <!-- profile-details -->
                 <div class="bg-white profile-details">
-                    <a data-toggle="modal" data-target="#paycard" class="d-flex w-100 align-items-center border-bottom p-3">
-                        <div class="left mr-3">
-                            <h6 class="font-weight-bold mb-1 text-dark">Payment Cards</h6>
-                            <p class="small text-muted m-0">Add a credit or debit card</p>
-                        </div>
-                        <div class="right ml-auto">
-                            <h6 class="font-weight-bold m-0"><i class="feather-chevron-right"></i></h6>
-                        </div>
-                    </a>
+                    
                     <a data-toggle="modal" data-target="#exampleModal" class="d-flex w-100 align-items-center border-bottom p-3">
                         <div class="left mr-3">
-                            <h6 class="font-weight-bold mb-1 text-dark">Address</h6>
+                            <h6 class="font-weight-bold mb-1 text-dark">Ubah Alamat</h6>
                             <p class="small text-muted m-0">Add or remove a delivery address</p>
                         </div>
                         <div class="right ml-auto">
@@ -94,7 +86,7 @@
                             <h6 class="font-weight-bold m-0"><i class="feather-chevron-right"></i></h6>
                         </div>
                     </a>
-                    <a href="faq.html" class="d-flex w-100 align-items-center border-bottom px-3 py-4">
+                    <a href="my_order.html" class="d-flex w-100 align-items-center border-bottom px-3 py-4">
                         <div class="left mr-3">
                             <h6 class="font-weight-bold m-0 text-dark"><i class="feather-truck bg-danger text-white p-2 rounded-circle mr-2"></i> Pesanan Saya</h6>
                         </div>
@@ -110,22 +102,7 @@
                             <h6 class="font-weight-bold m-0"><i class="feather-chevron-right"></i></h6>
                         </div>
                     </a>
-                    <a href="terms.html" class="d-flex w-100 align-items-center border-bottom px-3 py-4">
-                        <div class="left mr-3">
-                            <h6 class="font-weight-bold m-0 text-dark"><i class="feather-info bg-success text-white p-2 rounded-circle mr-2"></i> Term of use</h6>
-                        </div>
-                        <div class="right ml-auto">
-                            <h6 class="font-weight-bold m-0"><i class="feather-chevron-right"></i></h6>
-                        </div>
-                    </a>
-                    <a href="privacy.html" class="d-flex w-100 align-items-center px-3 py-4">
-                        <div class="left mr-3">
-                            <h6 class="font-weight-bold m-0 text-dark"><i class="feather-lock bg-warning text-white p-2 rounded-circle mr-2"></i> Privacy policy</h6>
-                        </div>
-                        <div class="right ml-auto">
-                            <h6 class="font-weight-bold m-0"><i class="feather-chevron-right"></i></h6>
-                        </div>
-                    </a>
+                   
                 </div>
             </div>
         </div>
@@ -482,47 +459,33 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add Delivery Address</h5>
+                        <h5 class="modal-title">Alamat Pengiriman</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
                   </div>
                   <div class="modal-body">
-                    <form class="">
+                    <form class="" action="profile_act/act_update_alamat.php" method="POST" >
                         <div class="form-row">
                             <div class="col-md-12 form-group">
-                                <label class="form-label">Delivery Area</label>
-                                <div class="input-group">
-                                    <input placeholder="Delivery Area" type="text" class="form-control">
-                                    <div class="input-group-append"><button type="button" class="btn btn-outline-secondary"><i class="feather-map-pin"></i></button></div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group"><label class="form-label">Complete Address</label><input placeholder="Complete Address e.g. house number, street name, landmark" type="text" class="form-control"></div>
-                            <div class="col-md-12 form-group"><label class="form-label">Delivery Instructions</label><input placeholder="Delivery Instructions e.g. Opposite Gold Souk Mall" type="text" class="form-control"></div>
-                            <div class="mb-0 col-md-12 form-group">
-                                <label class="form-label">Nickname</label>
-                                <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                                    <label class="btn btn-outline-secondary active">
-                                      <input type="radio" name="options" id="option1" checked> Home
-                                  </label>
-                                  <label class="btn btn-outline-secondary">
-                                      <input type="radio" name="options" id="option2"> Work
-                                  </label>
-                                  <label class="btn btn-outline-secondary">
-                                      <input type="radio" name="options" id="option3"> Other
-                                  </label>
-                              </div>
-                          </div>
+                                <label class="form-label">Alamat</label>
+                                    <div class="form-group">
+                                        <input type="text" name="id_pelanggan" value="<?php echo $_SESSION['id_customer'] ?>" hidden >
+                                         <textarea class="form-control" name="alamat" rows="5"><?php echo $data['alamat_customer'] ?></textarea>
+                                    </div>
+                                   
+                            </div>                      
                       </div>
-                  </form>
+                  
               </div>
               <div class="modal-footer p-0 border-0">
                 <div class="col-6 m-0 p-0">
                     <button type="button" class="btn border-top btn-lg btn-block" data-dismiss="modal">Close</button>
                 </div>
                 <div class="col-6 m-0 p-0">
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Save changes</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Simpan Perubahan</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>

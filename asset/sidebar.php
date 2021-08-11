@@ -72,12 +72,7 @@
                   <p>Tambah Data Produk</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Management Stok</p>
-                </a>
-              </li>
+             
               <li class="nav-item">
                 <a href="/eFoody2/pages/kategori/index" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -91,7 +86,7 @@
             <a href="/eFoody2/pages/supplier/index" class="nav-link">
               <i class="nav-icon fas fa-store"></i>
               <p>
-                Data Supplier
+                Outlet
               </p>
             </a>
           </li>
@@ -156,18 +151,7 @@
                   <p>Laporan Transaksi</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="/eFoody2/pages/kategori/index" class="nav-link">
-                  <i class="far fa fa-book nav-icon"></i>
-                  <p>Laporan Masuk Barang</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/eFoody2/pages/kategori/index" class="nav-link">
-                  <i class="far fa fa-book nav-icon"></i>
-                  <p>Laporan Masuk Barang</p>
-                </a>
-              </li>
+              
               
               
         </ul>

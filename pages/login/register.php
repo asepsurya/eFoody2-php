@@ -108,13 +108,17 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
-          </div>
+          </div><br>
+         
         </div>
         <div class="form-group">
         <small class="tx-grey"> Kekuatan password : </small>
         <div  class="progress progress-xs progress-striped ">
       <div id="progress-bar"></div>
         </div>
+        <small>Minimum 8 characters including capital & small letters (A-Z), (a-z), and numbers (1-9)</small>
+        <br>
+         
   </div>
         <div class="row">
           <div class="col-9">
@@ -125,6 +129,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
               </label>
             </div>
           </div>
+          
           <!-- /.col -->
          
         </div>

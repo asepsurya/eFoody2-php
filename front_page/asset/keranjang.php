@@ -46,7 +46,7 @@
                                 <div class="d-flex align-items-center">
                                     <div class="ml-auto">
                                     <div class="text-muted m-0 ml-auto mr-3 small">Qty :<br>
-                                    <Input type="number" class="form-control w-50 sm" value="1">
+                                    <Input type="number" class="form-control w-50 sm" value="<?= $data['qty'] ?>">
                                 </div>
                                        
                                         </div>
@@ -71,7 +71,7 @@
                 <button type="button" class="btn border-top btn-lg btn-block" data-dismiss="modal">Close</button>
             </div>
             <div class="col-6 m-0 p-0">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+              <a href="checkout.php" > <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button></a>
             </div>
         </div>
     </div>
