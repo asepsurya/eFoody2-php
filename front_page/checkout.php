@@ -87,11 +87,10 @@
                                 <div class="row">
                                 
                             <div class="form-row col-md-12 ">
-                                
-
                                 <div class="col-md-12 form-group"><label class="form-label font-weight-bold small">Nama</label><input placeholder="Enter Valid through(MM/YY)" type="text" class="form-control" value="<?= $row['nm_customer'] ?>"></div>
                                 <div class="col-md-8 form-group"><label class="form-label font-weight-bold small">Email</label><input placeholder="Enter Valid through(MM/YY)" type="text" class="form-control" value="<?= $row['email'] ?>"></div>
                                 <div class="col-md-4 form-group"><label class="form-label font-weight-bold small">No Hp</label><input placeholder="Enter CVV Number" type="text" class="form-control" value="<?= $row['no_kontak'] ?>"></div> 
+                                
                             </div>
                         
                                  
@@ -228,7 +227,7 @@
             <h6 class="font-weight-bold mb-0">TO PAY <span class="float-right">Rp. <?= number_format($jumlah,0,".",".") ?></span></h6>
             <div class="p-3">
                 <hr>
-                <Button type="submit" class="btn btn-success btn-block btn-lg" href="successful.html">Bayar Rp.<?= number_format($jumlah,0,".",".") ?> <i class="feather-arrow-right"></i></button>
+                <Button type="submit" class="btn btn-success btn-block btn-lg" href="successful.html"><i class="fas fa-shopping-basket"></i> Bayar Rp.<?= number_format($jumlah,0,".",".") ?> <i class="feather-arrow-right"></i></button>
             </div>
         </div>
         <div id="2" class="desc">
@@ -237,7 +236,7 @@
             <h6 class="font-weight-bold mb-0">TO PAY <span class="float-right">Rp. <?= number_format($tot_bayar,0,".",".") ?></span></h6>
             <div class="p-3">
                 <hr>
-                <Button type="submit" class="btn btn-success btn-block btn-lg" href="successful.html">Bayar Rp.<?= number_format($tot_bayar,0,".",".") ?> <i class="feather-arrow-right"></i></button>
+                <Button type="submit" class="btn btn-success btn-block btn-lg" href="successful.html"><i class="fas fa-shopping-basket"></i> Bayar Rp.<?= number_format($tot_bayar,0,".",".") ?> <i class="feather-arrow-right"></i></button>
             </div>
         </div>  
         <div id="3" class="desc">
@@ -246,7 +245,7 @@
             <h6 class="font-weight-bold mb-0">TO PAY <span class="float-right">Rp. <?= number_format($tot_bayar,0,".",".") ?></span></h6>
             <div class="p-3">
                 <hr>
-                <Button type="submit" class="btn btn-success btn-block btn-lg" href="successful.html">Bayar Rp.<?= number_format($tot_bayar,0,".",".") ?> <i class="feather-arrow-right"></i></button>
+                <Button type="submit" class="btn btn-success btn-block btn-lg" href="successful.html"><i class="fas fa-shopping-basket"></i> Bayar Rp.<?= number_format($tot_bayar,0,".",".") ?> <i class="feather-arrow-right"></i></button>
             </div>
         </div>  
    <!-- End Form -->

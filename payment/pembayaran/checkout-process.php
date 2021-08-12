@@ -23,26 +23,23 @@ $transaction_details = array(
     'order_id' => rand(),
     'gross_amount' => 145000, // no decimal allowed for creditcard
 );
+$id_pelanggan = $_SESSION['id_customer'];
+$query = $koneksi->query("SELECT * FROM tbl_keranjang_belanja WHERE id_customer='625002'");
+$row = $query->fetch_assoc();
+ 
+$item1_details= array('id' => 'TRS001','price' => "a",'quantity' => 2,'name' => "asdasda", 
+); 
+$arrayLength = count($item1_details);
+        $i = 0;
+        while ($i < $arrayLength)
+        {
+            $a = $item1_details[$i];
+            $i++;
+        }
+        
+$item_details= array($a);
+              echo $arrayLength;
 
-$myquery25 = "SELECT * FROM tbl_keranjang_belanja";
-$result5 = mysqli_query($koneksi, $myquery25);
-while($row2 = mysqli_fetch_assoc($result5)){ 
-    $jenis=$row2['nama_produk'];
-// Optional
-
-$item1_details = array(
-    'id' => 'a1',
-    'price' => "50000",
-    'quantity' => 2,
-    'name' => "$jenis"
-);
-
-foreach($item1_details as $a){
-    
-}
-// Optional
-$item_details = array ($item1_details);
-}
 // Optional
 $billing_address = array(
     'first_name'    => "Andri",
@@ -79,7 +76,7 @@ $customer_details = array(
 $params = array(
     'transaction_details' => $transaction_details,
     'customer_details' => $customer_details,
-    'item_details' => $item_details,
+    'item_details' => $item_details ,
 );
 
 try {

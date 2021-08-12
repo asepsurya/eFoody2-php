@@ -97,8 +97,9 @@ class Snap
                 $gross_amount += $item['quantity'] * $item['price'];
             }
             $params['transaction_details']['gross_amount'] = $gross_amount;
+            
         }
-
+     
         if (Config::$isSanitized) {
             Sanitizer::jsonRequest($params);
         }
