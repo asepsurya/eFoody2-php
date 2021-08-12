@@ -99,16 +99,16 @@
           ?> 
 
           <div class="col-10">
-          <form autocomplete="off" action="/action_page.php">
+          <form autocomplete="off" action="cari_produk.php">
             <div class="d-flex align-items-center justify-content-end pr-5">
               <!-- search -->  
             <div class="input-group mb-4 widget-header mr-4" style="margin-top: 20px; ">
-          <input type="text" class="form-control form-control-lg input_search border-right-0"  placeholder="Mau Makan Apa Hari ini...?" id="myInput">
+          <input type="text" class="form-control form-control-lg input_search border-right-0"  placeholder="Mau Makan Apa Hari ini...?" id="myInput" name="kata_kunci">
           <div class="input-group-prepend">
-            <div class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></div>
+            <button type="submit" class="btn input-group-text bg-white border_search border-left-0 text-primary"><i class="feather-search"></i></button>
           </div>
         </div>
-            </form>
+        </form>
               <a href="/eFoody2/pages/login/register" class="widget-header mr-4 text-dark">
                 <div class="icon d-flex align-items-center">
                   <i class="feather-user h6 mr-2 mb-0"></i> <span>Daftar</span>

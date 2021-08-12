@@ -76,7 +76,7 @@
               <li class="nav-item">
                 <a href="/eFoody2/pages/kategori/index" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Kategori</p>
+                  <p>Kategori Produk</p>
                 </a>
               </li>
             </ul>
@@ -98,14 +98,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/eFoody2/pages/driver/index" class="nav-link">
-              <i class="nav-icon fas fa-motorcycle"></i>
-              <p>
-                Data Driver
-              </p>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a href="/eFoody2/pages/pelanggan/index" class="nav-link">
               <i class="nav-icon fas fa-users"></i>

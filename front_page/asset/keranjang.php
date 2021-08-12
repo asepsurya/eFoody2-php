@@ -3,7 +3,13 @@
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"> Keranjang Belanja</h5>
+                <?php
+                $id = $_SESSION['id_customer'];
+                 $myquery = "SELECT * FROM tbl_keranjang_belanja where id_customer='$id'";
+                 $myresult = mysqli_query($koneksi, $myquery);
+                 $a=mysqli_num_rows($myresult);
+                ?>
+                <h5 class="modal-title"> Keranjang Belanja <span class="badge badge-primary"><?= $a ?></span> </h5> 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
@@ -32,13 +38,13 @@
                                 </div>
                                 <div>
                                     <p class="mb-0 font-weight-bold"><a href="restaurant.html" class="text-dark"><?php echo $data2['jenis_produk'] ?></a></p>
-                                    <p class="mb-0">Punjab, India</p>
+                                    
                                     <p>ORDER #321DERS</p>
                                     <p class="mb-0 small"><a href="status_canceled.html">View Details</a></p>
                                 </div>
                                 <div class="ml-auto">
-                                    
-                                    <p class="small font-weight-bold text-center"><i class="feather-clock"></i> 06/04/2020</p>
+                                   
+                                    <p class="small font-weight-bold text-center"><i class="feather-clock"></i>  <?= date("d/m/Y"); ?> </p>
                                 </div>
                             </div>
                             <div class="d-flex pt-3">

@@ -24,19 +24,47 @@
 
 <body class="fixed-bottom-bar">
 <?php include 'asset/header.php'; ?>
+
   <div class="d-none">
     <div class="bg-primary p-3 d-flex align-items-center">
       <a class="toggle togglew toggle-2" href="#"><span></span></a>
       <h4 class="font-weight-bold m-0 text-white">Search</h4>
     </div>
   </div>
+  <div class="d-none">
+        <div class="bg-primary border-bottom p-3 d-flex align-items-center">
+            <a class="toggle togglew toggle-2" href="#"><span></span></a>
+            <h4 class="font-weight-bold m-0 text-white">Track</h4>
+        </div>
+    </div>
+    <div class="osahan-map">
+        <div class="bg-primary">
+            <div class="container">
+                <div class="osahan-slider-map py-2">
+                  <?php
+                  $query2 = "SELECT * FROM tbl_kategori ";
+                  $result1 = mysqli_query($koneksi, $query2);
+                  while($mydata= mysqli_fetch_assoc($result1)){
+                      echo'
+                      <div class="osahan-slider-item">
+                      <div class="text-white">
+                          <div class="member-plan"># '.$mydata['jenis_kategori'].'</div>
+                      </div>
+                  </div>';
+                  }
+                  ?>
+                   
+                    
+                </div>
+            </div>
+        </div>
+
   <div class="osahan-popular">
     <!-- Most popular -->
     <div class="container">
       <div class="search py-5">
-        <div class="input-group mb-4">
-        
-        </div>
+       
+
         <!-- nav tabs -->
         <?php
         $id_kategori=$_GET['kata_kunci'];
@@ -48,9 +76,7 @@
           <li class="nav-item" role="presentation">
             <a class="nav-link active border-0 bg-light text-dark rounded" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="feather-home mr-2"></i>Produk (<?php echo  $cek  ?>)</a>
           </li>
-          <li class="nav-item" role="presentation">
-            <a class="nav-link border-0 bg-light text-dark rounded ml-3" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="feather-disc mr-2"></i>Dishes (23)</a>
-          </li>
+         
         </ul>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -500,6 +526,7 @@
       <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
       <!-- Custom scripts for all pages-->
       <script type="text/javascript" src="js/osahan.js"></script>
+      
     </body>
 
     </html>
