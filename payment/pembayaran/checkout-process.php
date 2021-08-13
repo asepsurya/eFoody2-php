@@ -24,9 +24,9 @@ $transaction_details = array(
     'gross_amount' => 145000, // no decimal allowed for creditcard
 );
 $id_pelanggan = $_SESSION['id_customer'];
-$query = $koneksi->query("SELECT * FROM tbl_keranjang_belanja WHERE id_customer='625002'");
-$row = $query->fetch_assoc();
- 
+$query = $koneksi->query("SELECT * FROM tbl_keranjang_belanja WHERE id_customer='625001'");
+while($row = $query->fetch_array()){
+echo
 $item1_details= array(
     'id' => 'TRS001',
     'price' => "$row[harga_produk]",
@@ -35,7 +35,7 @@ $item1_details= array(
 ); 
         
 $item_details= array($item1_details);
-             
+}        
 // Optional
 $billing_address = array(
     'first_name'    => "Andri",
