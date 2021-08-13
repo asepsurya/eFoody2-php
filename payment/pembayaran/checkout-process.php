@@ -27,19 +27,15 @@ $id_pelanggan = $_SESSION['id_customer'];
 $query = $koneksi->query("SELECT * FROM tbl_keranjang_belanja WHERE id_customer='625002'");
 $row = $query->fetch_assoc();
  
-$item1_details= array('id' => 'TRS001','price' => "a",'quantity' => 2,'name' => "asdasda", 
+$item1_details= array(
+    'id' => 'TRS001',
+    'price' => "$row[harga_produk]",
+    'quantity' => "$row[qty]",
+    'name' => "$row[nama_produk]", 
 ); 
-$arrayLength = count($item1_details);
-        $i = 0;
-        while ($i < $arrayLength)
-        {
-            $a = $item1_details[$i];
-            $i++;
-        }
         
-$item_details= array($a);
-              echo $arrayLength;
-
+$item_details= array($item1_details);
+             
 // Optional
 $billing_address = array(
     'first_name'    => "Andri",

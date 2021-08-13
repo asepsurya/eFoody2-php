@@ -21,6 +21,7 @@
   <link href="vendor/sidebar/demo.css" rel="stylesheet">
   <!-- Toastr -->
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="fixed-bottom-bar">
@@ -97,8 +98,7 @@
   </div>
   <div class="container">
     
-   
-    
+
 
 <center><img src="img/a.jpg" width="500" class="img-fluid item-img w-100 rounded overflow-hidden" >  </center>
 
@@ -128,7 +128,7 @@
         </div>
         <div class="p-3 position-relative">
           <div class="list-card-body">
-            <h6 class="mb-1"><a href="restaurant?id_supplier=<?php echo $data['id_supplier'] ?>" class="text-black"><?php echo $data['jenis_produk'] ?>
+            <h6 class="mb-1"><a data-toggle="modal" data-target="#detile" class="text-black"><?php echo $data['jenis_produk'] ?>
             </a>
         </h6>
           <p class="text-gray mb-1 small"><?php echo $data['jenis_kategori'] ?></p>
@@ -596,6 +596,27 @@
         </div>
       </div>
 
+<!-- Modal -->
+
+<div class="modal fade" id="detile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detile Produk</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Pesan</button>
+      </div>
+    </div>
+  </div>
+</div>
      
       <!-- Bootstrap core JavaScript -->
       <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
@@ -607,7 +628,9 @@
       <!-- Custom scripts for all pages-->
       <script type="text/javascript" src="js/osahan.js"></script>
       <script src="plugins/toastr/toastr.min.js"></script>
-<?php include '../asset/alert.php' ?>
+      <?php include '../asset/alert.php' ?>
+      <?php include 'alert.php' ?>
+        
     </body>
 
     </html>

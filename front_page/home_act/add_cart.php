@@ -12,10 +12,10 @@ $result = mysqli_query($koneksi, $query);
 $cek = mysqli_num_rows($result);
 if($cek > 0){
     mysqli_query($koneksi,"UPDATE tbl_keranjang_belanja SET qty = qty + 1 where id_produk='$id_produk' ");
-    header("location:../home?pesan=tambah");
+    header("location:../home?pesan=tambah_keranjang");
 }else{
     mysqli_query($koneksi,"INSERT INTO tbl_keranjang_belanja VALUES('','$id_pelanggan','$tanggal_transaksi','$id_produk','$nama_produk','$harga','1')");
-    header("location:../home?pesan=tambah");   
+    header("location:../home?pesan=tambah_keranjang");   
 }
 
 

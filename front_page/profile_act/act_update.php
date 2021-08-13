@@ -15,7 +15,7 @@ $id=$_POST['id'];
 			move_uploaded_file($tmp, '../../pages/login/img/'.$namafile);
 			$x = $namafile;
 			mysqli_query($koneksi,"UPDATE tbl_customer SET gambar='$x' WHERE id_customer='$id'");
-			header("location:../profile?pesan=tambah");
+			header("location:../profile?pesan=simpan");
 		
 	}
 

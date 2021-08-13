@@ -583,6 +583,9 @@ while($data = mysqli_fetch_assoc($result)){
 <script src='https://unpkg.com/eva-icons'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php include 'alert.php' ?>
+
 </body>
 
 </html>
