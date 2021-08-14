@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <link rel="icon" type="image/png" href="img/fav.png">
+    <title>Swiggiweb - Online Food Ordering Website Template</title>
+    <!-- Slick Slider -->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
+    <!-- Feather Icon-->
+    <link href="vendor/icons/feather.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Sidebar CSS -->
+    <link href="vendor/sidebar/demo.css" rel="stylesheet">
+</head>
+
+<body>
+<?php include 'asset/header.php'; ?>
+    <div class="d-none">
+        <div class="bg-primary p-3 d-flex align-items-center">
+            <a class="toggle togglew toggle-2" href="#"><span></span></a>
+            <h4 class="font-weight-bold m-0 text-white">Thanks :)</h4>
+        </div>
+    </div>
+    <div class="py-5 osahan-coming-soon d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="text-center pb-3">
+                <h1 class="font-weight-bold">Osahan, Your order has been successful</h1>
+                <p>Check your order status in <a href="my_order.html" class="font-weight-bold text-decoration-none text-primary">My Orders</a> about next steps information.</p>
+            </div>
+            <!-- continue -->
+            <div class="bg-white rounded text-center p-4 shadow-sm">
+                <h1 class="display-1 mb-4">🎉</h1>
+                <h6 class="font-weight-bold mb-2">Preparing your order</h6>
+                <p class="small text-muted">Your order will be prepared and will come soon</p>
+                <a href="status_onprocess.html" class="btn rounded btn-primary btn-lg btn-block">Track My Order</a>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer class="section-footer border-top bg-dark">
+        <div class="container">
+            <section class="footer-top padding-y py-5">
+                <div class="row pt-3">
+                    <aside class="col-md-4 footer-about">
+                        <article class="d-flex pb-3">
+                            <div><img alt="#" src="img/logo_web.png" class="logo-footer mr-3"></div>
+                            <div>
+                                <h6 class="title text-white">About Us</h6>
+                                <p class="text-muted">Some short text about company like You might remember the Dell computer commercials in which a youth reports.</p>
+                                <div class="d-flex align-items-center">
+                                    <a class="btn btn-icon btn-outline-light mr-1 btn-sm" title="Facebook" target="_blank" href="#"><i class="feather-facebook"></i></a>
+                                    <a class="btn btn-icon btn-outline-light mr-1 btn-sm" title="Instagram" target="_blank" href="#"><i class="feather-instagram"></i></a>
+                                    <a class="btn btn-icon btn-outline-light mr-1 btn-sm" title="Youtube" target="_blank" href="#"><i class="feather-youtube"></i></a>
+                                    <a class="btn btn-icon btn-outline-light mr-1 btn-sm" title="Twitter" target="_blank" href="#"><i class="feather-twitter"></i></a>
+                                </div>
+                            </div>
+                        </article>
+                    </aside>
+                    <aside class="col-sm-3 col-md-2 text-white">
+                        <h6 class="title">Error Pages</h6>
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="not-found.html" class="text-muted">Not found</a></li>
+                            <li> <a href="maintence.html" class="text-muted">Maintence</a></li>
+                            <li> <a href="coming-soon.html" class="text-muted">Coming Soon</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-3 col-md-2 text-white">
+                        <h6 class="title">Services</h6>
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="faq.html" class="text-muted">Delivery Support</a></li>
+                            <li> <a href="contact-us.html" class="text-muted">Contact Us</a></li>
+                            <li> <a href="terms.html" class="text-muted">Terms of use</a></li>
+                            <li> <a href="privacy.html" class="text-muted">Privacy policy</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-3  col-md-2 text-white">
+                        <h6 class="title">For users</h6>
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="login.html" class="text-muted"> User Login </a></li>
+                            <li> <a href="signup.html" class="text-muted"> User register </a></li>
+                            <li> <a href="forgot_password.html" class="text-muted"> Forgot Password </a></li>
+                            <li> <a href="profile.html" class="text-muted"> Account Setting </a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-3  col-md-2 text-white">
+                        <h6 class="title">More Pages</h6>
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="trending.html" class="text-muted"> Trending </a></li>
+                            <li> <a href="most_popular.html" class="text-muted"> Most popular </a></li>
+                            <li> <a href="restaurant.html" class="text-muted"> Restaurant Details </a></li>
+                            <li> <a href="favorites.html" class="text-muted"> Favorites </a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- row.// -->
+            </section>
+            <!-- footer-top.// -->
+            <section class="footer-center border-top padding-y py-5">
+                <h6 class="title text-white">Countries</h6>
+                <div class="row">
+                    <aside class="col-sm-2 col-md-2 text-white">
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="#" class="text-muted">India</a></li>
+                            <li> <a href="#" class="text-muted">Indonesia</a></li>
+                            <li> <a href="#" class="text-muted">Ireland</a></li>
+                            <li> <a href="#" class="text-muted">Italy</a></li>
+                            <li> <a href="#" class="text-muted">Lebanon</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-2 col-md-2 text-white">
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="#" class="text-muted">Malaysia</a></li>
+                            <li> <a href="#" class="text-muted">New Zealand</a></li>
+                            <li> <a href="#" class="text-muted">Philippines</a></li>
+                            <li> <a href="#" class="text-muted">Poland</a></li>
+                            <li> <a href="#" class="text-muted">Portugal</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-2 col-md-2 text-white">
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="#" class="text-muted">Australia</a></li>
+                            <li> <a href="#" class="text-muted">Brasil</a></li>
+                            <li> <a href="#" class="text-muted">Canada</a></li>
+                            <li> <a href="#" class="text-muted">Chile</a></li>
+                            <li> <a href="#" class="text-muted">Czech Republic</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-2 col-md-2 text-white">
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="#" class="text-muted">Turkey</a></li>
+                            <li> <a href="#" class="text-muted">UAE</a></li>
+                            <li> <a href="#" class="text-muted">United Kingdom</a></li>
+                            <li> <a href="#" class="text-muted">United States</a></li>
+                            <li> <a href="#" class="text-muted">Sri Lanka</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-2 col-md-2 text-white">
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="#" class="text-muted">Qatar</a></li>
+                            <li> <a href="#" class="text-muted">Singapore</a></li>
+                            <li> <a href="#" class="text-muted">Slovakia</a></li>
+                            <li> <a href="#" class="text-muted">South Africa</a></li>
+                            <li> <a href="#" class="text-muted">Green Land</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-2 col-md-2 text-white">
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="#" class="text-muted">Pakistan</a></li>
+                            <li> <a href="#" class="text-muted">Bangladesh</a></li>
+                            <li> <a href="#" class="text-muted">Bhutaan</a></li>
+                            <li> <a href="#" class="text-muted">Nepal</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- row.// -->
+            </section>
+        </div>
+        <!-- //container -->
+        <section class="footer-copyright border-top py-3 bg-light">
+            <div class="container d-flex align-items-center">
+                <p class="mb-0"> © 2020 Company All rights reserved </p>
+                <p class="text-muted mb-0 ml-auto d-flex align-items-center">
+                    <a href="#" class="d-block"><img alt="#" src="img/appstore.png" height="40"></a>
+                    <a href="#" class="d-block ml-3"><img alt="#" src="img/playmarket.png" height="40"></a>
+                </p>
+            </div>
+        </section>
+    </footer>
+    <nav id="main-nav">
+        <ul class="second-nav">
+            <li><a href="home.html"><i class="feather-home mr-2"></i> Homepage</a></li>
+            <li><a href="my_order.html"><i class="feather-list mr-2"></i> My Orders</a></li>
+            <li>
+                <a href="#"><i class="feather-edit-2 mr-2"></i> Authentication</a>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Register</a></li>
+                    <li><a href="forgot_password.html">Forgot Password</a></li>
+                    <li><a href="verification.html">Verification</a></li>
+                    <li><a href="location.html">Location</a></li>
+                </ul>
+            </li>
+            <li><a href="favorites.html"><i class="feather-heart mr-2"></i> Favorites</a></li>
+            <li><a href="trending.html"><i class="feather-trending-up mr-2"></i> Trending</a></li>
+            <li><a href="most_popular.html"><i class="feather-award mr-2"></i> Most Popular</a></li>
+            <li><a href="restaurant.html"><i class="feather-paperclip mr-2"></i> Restaurant Detail</a></li>
+            <li><a href="checkout.html"><i class="feather-list mr-2"></i> Checkout</a></li>
+            <li><a href="successful.html"><i class="feather-check-circle mr-2"></i> Successful</a></li>
+            <li><a href="map.html"><i class="feather-map-pin mr-2"></i> Live Map</a></li>
+            <li>
+                <a href="#"><i class="feather-user mr-2"></i> Profile</a>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="favorites.html">Delivery support</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="terms.html">Terms of use</a></li>
+                    <li><a href="privacy.html">Privacy & Policy</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="feather-alert-triangle mr-2"></i> Error</a>
+                <ul>
+                    <li><a href="not-found.html">Not Found</a>
+                        <li><a href="maintence.html"> Maintence</a>
+                            <li><a href="coming-soon.html">Coming Soon</a>
+                </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="feather-link mr-2"></i> Navigation Link Example</a>
+                    <ul>
+                        <li>
+                            <a href="#">Link Example 1</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Link Example 1.1</a>
+                                    <ul>
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Link Example 1.2</a>
+                                    <ul>
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Link Example 2</a></li>
+                        <li><a href="#">Link Example 3</a></li>
+                        <li><a href="#">Link Example 4</a></li>
+                        <li data-nav-custom-content>
+                            <div class="custom-message">
+                                You can add any custom content to your navigation items. This text is just an example.
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+        </ul>
+        <ul class="bottom-nav">
+            <li class="email">
+                <a class="text-danger" href="home.html">
+                    <p class="h5 m-0"><i class="feather-home text-danger"></i></p>
+                    Home
+                </a>
+            </li>
+            <li class="github">
+                <a href="faq.html">
+                    <p class="h5 m-0"><i class="feather-message-circle"></i></p>
+                    FAQ
+                </a>
+            </li>
+            <li class="ko-fi">
+                <a href="contact-us.html">
+                    <p class="h5 m-0"><i class="feather-phone"></i></p>
+                    Help
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="osahan-menu-fotter fixed-bottom bg-white px-3 py-2 text-center d-none">
+        <div class="row">
+            <div class="col selected">
+                <a href="home.html" class="text-danger small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-home text-danger"></i></p>
+                    Home
+                </a>
+            </div>
+            <div class="col">
+                <a href="most_popular.html" class="text-dark small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-map-pin"></i></p>
+                    Trending
+                </a>
+            </div>
+            <div class="col bg-white rounded-circle mt-n4 px-3 py-2">
+                <div class="bg-danger rounded-circle mt-n0 shadow">
+                    <a href="checkout.html" class="text-white small font-weight-bold text-decoration-none">
+                        <i class="feather-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <a href="favorites.html" class="text-dark small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-heart"></i></p>
+                    Favorites
+                </a>
+            </div>
+            <div class="col">
+                <a href="profile.html" class="text-dark small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-user"></i></p>
+                    Profile
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- slick Slider JS-->
+    <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+    <!-- Sidebar JS-->
+    <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script type="text/javascript" src="js/osahan.js"></script>
+</body>
+
+</html>

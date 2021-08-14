@@ -83,7 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-header">
               <div class="btn-group">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus"></i>  Tambah Data </button>
-                        <button type="button" class="btn btn-default"><i class="far fa-file-pdf"></i> Exsport Data</button>
+                        <a href="action/cetak.php"><button type="button" class="btn btn-default"><i class="far fa-file-pdf"></i> Exsport Data</button></a>
                         
                       </div>
                 <div class="card-tools">

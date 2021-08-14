@@ -8,6 +8,8 @@
   <meta name="author" content="Askbootstrap">
   <link rel="icon" type="image/png" href="img/fav.png">
   <title>Swiggiweb - Online Food Ordering Website Template</title>
+   <!-- Font Awesome -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css"> 
   <!-- Slick Slider -->
   <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
   <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
@@ -115,13 +117,13 @@
                 <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
                 <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
                 <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-                <a href="restaurant.html">
+                <a href="">
                   <img alt="#" src="../pages/data_produk/upload/<?php echo $data['gambar'] ?>" class="img-fluid item-img w-100">
                 </a>
               </div>
               <div class="p-3 position-relative">
                 <div class="list-card-body">
-                  <h6 class="mb-1"><a href="restaurant.html" class="text-black"><?php echo $data['jenis_produk'] ?>
+                  <h6 class="mb-1"><a href="" class="text-black"><?php echo $data['jenis_produk'] ?>
                   </a>
                 </h6>
                 
@@ -146,10 +148,10 @@
         $tanggal_transaksi = date("d-m-Y") ;
         if (empty($_SESSION['username'])){
           echo'
-          <a href="../pages/login/index"><button type="button" class="btn btn-success btn-block btn-flat">Pesan</button></a>';
+          <a href="../pages/login/index"><button type="button" class="btn btn-primary btn-block btn-flat"> <i class="fas fa-shopping-basket"></i> Pesan</button></a>';
         }else{
           echo'
-          <a href="home_act/add_cart.php?tanggal='.$tanggal_transaksi.'&id_customer='.$_SESSION['id_customer'].'&id_produk='.$data['id_produk'].'&nama_produk='.$data['jenis_produk'].'&harga='.$data['harga_produk'].'"><button type="button" class="btn btn-success btn-block btn-flat">Pesan</button></a>';
+          <a href="home_act/add_cart.php?tanggal='.$tanggal_transaksi.'&id_customer='.$_SESSION['id_customer'].'&id_produk='.$data['id_produk'].'&nama_produk='.$data['jenis_produk'].'&harga='.$data['harga_produk'].'"><button type="button" class="btn btn-primary btn-block btn-flat"><i class="fas fa-shopping-basket"></i> Pesan</button></a>';
         }
         ?>
             </div>

@@ -11,6 +11,8 @@
   <!-- Slick Slider -->
   <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
   <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css"> 
   <!-- Feather Icon-->
   <link href="vendor/icons/feather.css" rel="stylesheet" type="text/css">
   <!-- Bootstrap core CSS -->
@@ -24,9 +26,30 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
+
 <body class="fixed-bottom-bar">
   <?php include 'asset/header.php'; ?>
-  
+  <?php
+// mengambil data barang dengan kode paling besar
+$query = mysqli_query($koneksi, "SELECT max(id_transaksi) as kodeTerbesar FROM tbl_keranjang_belanja");
+$data = mysqli_fetch_array($query);
+$kodeBarang = $data['kodeTerbesar'];
+ 
+// mengambil angka dari kode barang terbesar, menggunakan fungsi substr
+// dan diubah ke integer dengan (int)
+$urutan = (int) substr($kodeBarang, 3, 3);
+ 
+// bilangan yang diambil ini ditambah 1 untuk menentukan nomor urut berikutnya
+$urutan++;
+ 
+// membentuk kode barang baru
+// perintah sprintf("%03s", $urutan); berguna untuk membuat string menjadi 3 karakter
+// misalnya perintah sprintf("%03s", 15); maka akan menghasilkan '015'
+// angka yang diambil tadi digabungkan dengan kode huruf yang kita inginkan, misalnya BRG 
+$huruf = "TRS";
+$kodeBarang = $huruf . sprintf("%03s", $urutan);
+ 
+?>
   <div class="osahan-home-page">
     <div class="bg-primary p-3 d-none">
       <div class="text-white">
@@ -105,7 +128,7 @@
 <!-- Most popular -->
 <div class="py-3 title d-flex align-items-center">
   <h5 class="m-0">Rekomendasi</h5>
-  <a class="font-weight-bold ml-auto" href="most_popular.html">26 places <i class="feather-chevrons-right"></i></a>
+  <a class="font-weight-bold ml-auto" href="cari_produk.php?kata_kunci=">26 places <i class="feather-chevrons-right"></i></a>
 </div>
 <!-- Most popular -->
 <div class="most_popular">
@@ -122,16 +145,16 @@
           <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>
           <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
           <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-          <a href="restaurant.html">
+          <a href="" data-toggle="modal" data-target="#detile<?= $data['id_produk'] ?>" >
             <img alt="#" src="../pages/data_produk/upload/<?php echo $data['gambar']; ?>" class="img-fluid item-img w-100">
           </a>
         </div>
         <div class="p-3 position-relative">
           <div class="list-card-body">
-            <h6 class="mb-1"><a data-toggle="modal" data-target="#detile" class="text-black"><?php echo $data['jenis_produk'] ?>
-            </a>
-        </h6>
-          <p class="text-gray mb-1 small"><?php echo $data['jenis_kategori'] ?></p>
+            <h6 class="mb-1"><b><a href="" data-toggle="modal" data-target="#detile<?= $data['id_produk']  ?>" class="text-black"><?php echo $data['jenis_produk'] ?> 
+            </a></b>
+        </h6> 
+          <a class="text-gray mb-1 small"><?php echo $data['jenis_kategori'] ?></p>
           
           <p class="text-gray mb-1 rating">
           </p>
@@ -153,10 +176,10 @@
         $tanggal_transaksi = date("d-m-Y") ;
         if (empty($_SESSION['username'])){
           echo'
-          <a href="../pages/login/index"><button type="button" class="btn btn-success btn-block btn-flat">Pesan</button></a>';
+          <a href="../pages/login/index"><button type="button" class="btn btn-primary btn-block btn-flat"><i class="fas fa-shopping-basket"></i> Pesan</button></a>';
         }else{
           echo'
-          <a href="home_act/add_cart.php?tanggal='.$tanggal_transaksi.'&id_customer='.$_SESSION['id_customer'].'&id_produk='.$data['id_produk'].'&nama_produk='.$data['jenis_produk'].'&harga='.$data['harga_produk'].'"><button type="button" class="btn btn-success btn-block btn-flat">Pesan</button></a>';
+          <a href="home_act/add_cart.php?id_transaksi='.$kodeBarang.'&tanggal='.$tanggal_transaksi.'&id_customer='.$_SESSION['id_customer'].'&id_produk='.$data['id_produk'].'&nama_produk='.$data['jenis_produk'].'&harga='.$data['harga_produk'].'"><button type="button" class="btn btn-primary btn-block btn-flat"><i class="fas fa-shopping-basket"></i> Pesan</button></a>';
         }
         ?>
         </div>
@@ -254,18 +277,18 @@
     <div class="col selected">
       <a href="home.html" class="text-danger small font-weight-bold text-decoration-none">
         <p class="h4 m-0"><i class="feather-home text-danger"></i></p>
-        Home
+        Halaman
       </a>
     </div>
     <div class="col">
       <a href="most_popular.html" class="text-dark small font-weight-bold text-decoration-none">
         <p class="h4 m-0"><i class="feather-map-pin"></i></p>
-        Trending
+        Home
       </a>
     </div>
     <div class="col bg-white rounded-circle mt-n4 px-3 py-2">
       <div class="bg-danger rounded-circle mt-n0 shadow">
-        <a href="checkout.html" class="text-white small font-weight-bold text-decoration-none">
+        <a href="checkout.php" class="text-white small font-weight-bold text-decoration-none">
           <i class="feather-shopping-cart"></i>
         </a>
       </div>
@@ -597,8 +620,12 @@
       </div>
 
 <!-- Modal -->
-
-<div class="modal fade" id="detile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <?php
+    $thisquery = "SELECT tbl_produk.*,tbl_kategori.jenis_kategori FROM tbl_produk,tbl_kategori where tbl_produk.id_kategori = tbl_kategori.id_kategori Limit 8";
+    $thisresult = mysqli_query($koneksi, $thisquery);
+    while($mydata = mysqli_fetch_assoc($thisresult)){
+      ?>
+<div class="modal fade" id="detile<?php echo $mydata['id_produk'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -608,16 +635,59 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+      
+      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+        <div class="list-card-image">
+          <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> <b>Rp. <?= number_format($mydata['harga_produk'],0,".",".")  ?> </b><span class="badge badge-danger">IDR</span></span></div>
+          <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="feather-heart"></i></a></div>
+          <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
+          <a href="">
+            <img alt="#" src="../pages/data_produk/upload/<?php echo $mydata['gambar']; ?>" class="img-fluid item-img w-100">
+          </a>
+        </div>
+        <div class="p-3 position-relative">
+          <div class="list-card-body">
+            <h6 class="mb-1"> <?php echo $mydata['jenis_produk'] ?>
+            </a>
+        </h6> 
+          <p class="text-gray mb-1 small"><?php echo $mydata['jenis_kategori'] ?></p>
+          
+          <p class="text-gray mb-1 rating">
+          </p>
+          <ul class="rating-stars list-unstyled">
+            <li>
+              <i cl ass="feather-star star_active"></i>
+              <i class="feather-star star_active"></i>
+              <i class="feather-star star_active"></i>
+              <i class="feather-star "></i>
+              <i class="feather-star"></i>
+            </li>
+          </ul>
+          <p><?php echo $mydata['deskripsi'] ?></p>
+    </div>
+        </div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Pesan</button>
+   
+       
+      <?php 
+        $tanggal_transaksi = date("d-m-Y") ;
+        if (empty($_SESSION['username'])){
+          echo'
+          <a class="btn btn-primary btn-block" href="../pages/login/index"><button type="button" class="btn btn-primary btn-block"><i class="fas fa-shopping-basket"></i> Pesan</button></a>';
+        }else{
+          echo'
+          <a class="btn btn-primary btn-block"  href="home_act/add_cart.php&id_transaksi='.$kodeBarang.'?tanggal='.$tanggal_transaksi.'&id_customer='.$_SESSION['id_customer'].'&id_produk='.$mydata['id_produk'].'&nama_produk='.$mydata['jenis_produk'].'&harga='.$mydata['harga_produk'].'"><i class="fas fa-shopping-basket"></i> Pesan</a>';
+        }
+        ?>
+        
       </div>
     </div>
   </div>
 </div>
-     
+<?php } ?>
+
       <!-- Bootstrap core JavaScript -->
       <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
       <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

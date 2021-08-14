@@ -90,15 +90,34 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+           
+          <li class="nav-item menu-close">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-hand-holding-usd"></i>
+              <i class="nav-icon fas fa-hand-holding-usd fa-boxes"></i>
               <p>
-                Transaksi <span class="right badge badge-danger">New</span>
+                Transaksi 
+               
+                <span class="right badge badge-danger">20</span>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/eFoody2/pages/order/index" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Order</p>
+                </a>
+              </li>
+             
+              <li class="nav-item">
+                <a href="/eFoody2/pages/kategori/index" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Riwayat Order</p>
+                </a>
+              </li>
+            </ul>
           </li>
-          
+
+         
           <li class="nav-item">
             <a href="/eFoody2/pages/pelanggan/index" class="nav-link">
               <i class="nav-icon fas fa-users"></i>

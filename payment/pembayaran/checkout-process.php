@@ -33,8 +33,15 @@ $item1_details= array(
     'quantity' => "$row[qty]",
     'name' => "$row[nama_produk]", 
 ); 
+$item2_details= array(
+    'id' => 'TRS001',
+    'price' => "$row[harga_produk]",
+    'quantity' => "$row[qty]",
+    'name' => "$row[nama_produk]", 
+); 
+    
         
-$item_details= array($item1_details);
+$item_details= array($item1_details,$item2_details);
 }        
 // Optional
 $billing_address = array(

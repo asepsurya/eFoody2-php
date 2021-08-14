@@ -22,7 +22,7 @@ if($password == $password2){
          // jalankan query INSERT untuk menambah data ke database
         $query = "INSERT INTO tbl_customer VALUES ('$id_customer','$nama','','','$telp','$username','$password2','user-default.jpg')";
         $result = mysqli_query($koneksi, $query);
-        $query2 = "INSERT INTO tbl_user VALUES (NULL,'$id_customer','$username','$password2','2')";
+        $query2 = "INSERT INTO tbl_user VALUES ('','$id_customer','$username','$password2','2')";
         $result = mysqli_query($koneksi, $query2);
 
         header("location:../index?pesan=tambah");

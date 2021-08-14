@@ -65,6 +65,7 @@
           <div class="icon d-flex align-items-center">
               <i class="feather-shopping-cart h6 mr-2 mb-0"></i>
           </div>
+          
       </a>
 </form>
        ';

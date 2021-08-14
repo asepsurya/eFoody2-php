@@ -85,16 +85,57 @@
                          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="osahan-card-body border-top p-3">
                                 <div class="row">
-                                
-                            <div class="form-row col-md-12 ">
+                                                <div class="form-row col-md-12 ">
+                                <input hidden type="text" class="form-control" value="<?= $kodeBarang ?>">
                                 <div class="col-md-12 form-group"><label class="form-label font-weight-bold small">Nama</label><input placeholder="Enter Valid through(MM/YY)" type="text" class="form-control" value="<?= $row['nm_customer'] ?>"></div>
                                 <div class="col-md-8 form-group"><label class="form-label font-weight-bold small">Email</label><input placeholder="Enter Valid through(MM/YY)" type="text" class="form-control" value="<?= $row['email'] ?>"></div>
                                 <div class="col-md-4 form-group"><label class="form-label font-weight-bold small">No Hp</label><input placeholder="Enter CVV Number" type="text" class="form-control" value="<?= $row['no_kontak'] ?>"></div> 
                                 
                             </div>
                         
-                                 
-</div>
+                        </div>
+                        <div class="osahan-cart-item mb-3 rounded shadow-sm bg-white overflow-hidden">
+                            <div class="osahan-cart-item-profile bg-white p-3">
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-3 font-weight-bold">Metode Pembayaran</h6>
+                                    <div class="row">
+                                        <div class="custom-control col-lg-6 custom-radio mb-3 position-relative border-custom-radio">
+                                            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" checked>
+                                            <label class="custom-control-label w-100" for="customRadioInline1">
+                                       <div>
+                                          <div class="p-3 bg-white rounded shadow-sm w-100">
+                                             <div class="d-flex align-items-center mb-2">
+                                                <img src="img/gopay.png" width="100">
+                                                <p class="mb-0 badge badge-success ml-auto"><i class="icofont-check-circled"></i> Default</p>
+                                             </div>
+                                             <p class="small text-muted m-0">1001 Veterans Blvd</p>
+                                             <p class="small text-muted m-0">Redwood City, CA 94063</p>
+                                          </div>
+                                          <a href="#"  data-toggle="modal" data-target="#exampleModal" class="btn btn-block btn-light border-top">Edit</a>
+                                       </div>
+                                    </label>
+                                        </div>
+                                        <div class="custom-control col-lg-6 custom-radio position-relative border-custom-radio">
+                                            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                            <label class="custom-control-label w-100" for="customRadioInline2">
+                                       <div>
+                                          <div class="p-3 rounded bg-white shadow-sm w-100">
+                                             <div class="d-flex align-items-center mb-2">
+                                             <img src="img/cod.png" width="100">
+                                                <p class="mb-0 badge badge-light ml-auto"><i class="icofont-check-circled"></i> Select</p>
+                                             </div>
+                                             <p class="small text-muted m-0">Model Town, Ludhiana</p>
+                                             <p class="small text-muted m-0">Punjab 141002, India</p>
+                                          </div>
+                                          <a href="#"  data-toggle="modal" data-target="#exampleModal" class="btn btn-block btn-light border-top">Edit</a>
+                                       </div>
+                                    </label>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                            </div>
                      </div>
                  </div>
              </div>
