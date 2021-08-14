@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2021 at 02:38 PM
+-- Generation Time: Aug 14, 2021 at 08:18 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.3.29
 
@@ -45,7 +45,9 @@ CREATE TABLE `tbl_customer` (
 INSERT INTO `tbl_customer` (`id_customer`, `nm_customer`, `alamat_customer`, `kota`, `no_kontak`, `email`, `password`, `gambar`) VALUES
 (625001, 'Asep Surya Somantri', 'Ruko Hamas, Jl. Pancasila No.1, Lengkongsari, Tawang, Tasikmalaya, West Java 46112', '', '087731402487', 'asepsurya1998@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'One Ok Rock.jpg'),
 (625002, 'INOPAK INSTITUTE', 'Osmangazi Mah. Baris Manco Cad. No: 5/2 Kirac, 34522 Esenyurt/İstanbul, Turki Kota Tasikmalaya', '', '085445662112', 'inopakinstitute@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '1.jpg'),
-(625003, 'Abang Jali', '', '', '08522144544', 'admin2020@gmail.com', '0192023a7bbd73250516f069df18b500', 'user-default.jpg');
+(625003, 'Abang Jali', '', '', '08522144544', 'admin2020@gmail.com', '0192023a7bbd73250516f069df18b500', 'user-default.jpg'),
+(625004, 'aaaaa', '', '', '2222', 'gugun@yahoo.id', '21232f297a57a5a743894a0e4a801fc3', 'user-default.jpg'),
+(625005, 'YOGA HIDAYAT', '', '', '087731402487', 'yogah12@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'user-default.jpg');
 
 -- --------------------------------------------------------
 
@@ -105,7 +107,8 @@ INSERT INTO `tbl_kategori` (`id_kategori`, `jenis_kategori`, `gambar`) VALUES
 --
 
 CREATE TABLE `tbl_keranjang_belanja` (
-  `id_transaksi` int(11) NOT NULL,
+  `no` int(11) NOT NULL,
+  `id_transaksi` varchar(50) NOT NULL,
   `id_customer` varchar(20) NOT NULL,
   `tanggal_transaksi` varchar(20) NOT NULL,
   `id_produk` varchar(30) NOT NULL,
@@ -118,12 +121,11 @@ CREATE TABLE `tbl_keranjang_belanja` (
 -- Dumping data for table `tbl_keranjang_belanja`
 --
 
-INSERT INTO `tbl_keranjang_belanja` (`id_transaksi`, `id_customer`, `tanggal_transaksi`, `id_produk`, `nama_produk`, `harga_produk`, `qty`) VALUES
-(9, '625002', '11-08-2021', '62007', 'Kwetiaw', '12000', 4),
-(10, '625002', '11-08-2021', '62008', 'Chicken Bumbu Kari', '12000', 1),
-(11, '625002', '11-08-2021', '62011', 'Lotek Big Jumbo', '15000', 2),
-(12, '625001', '11-08-2021', '62011', 'Lotek Big Jumbo', '15000', 2),
-(13, '625001', '11-08-2021', '62010', 'Japanese Beef Burger', '10000', 1);
+INSERT INTO `tbl_keranjang_belanja` (`no`, `id_transaksi`, `id_customer`, `tanggal_transaksi`, `id_produk`, `nama_produk`, `harga_produk`, `qty`) VALUES
+(2, 'TRS001', '625001', '14-08-2021', '62008', 'Chicken Bumbu Kari', '12000', 1),
+(3, 'TRS002', '625001', '14-08-2021', '62007', 'Kwetiaw', '12000', 1),
+(4, 'TRS003', '625001', '14-08-2021', '62006', 'Paket Hemat', '50000', 1),
+(5, 'TRS004', '625002', '14-08-2021', '62007', 'Kwetiaw', '12000', 1);
 
 -- --------------------------------------------------------
 
@@ -135,20 +137,20 @@ CREATE TABLE `tbl_pesanan` (
   `id_transaksi` int(20) NOT NULL,
   `id_customer` int(20) NOT NULL,
   `id_produk` int(10) NOT NULL,
-  `jml_produk` int(10) NOT NULL,
+  `jenis_produk` varchar(30) NOT NULL,
+  `qty` int(10) NOT NULL,
+  `harga` varchar(20) NOT NULL,
   `total_harga` int(20) NOT NULL,
   `tgl_pesan` varchar(30) NOT NULL,
-  `tgl_kirim` varchar(30) NOT NULL,
-  `alamat_tujuan` text NOT NULL,
-  `kota_tujuan` varchar(30) NOT NULL
+  `alamat_tujuan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_pesanan`
 --
 
-INSERT INTO `tbl_pesanan` (`id_transaksi`, `id_customer`, `id_produk`, `jml_produk`, `total_harga`, `tgl_pesan`, `tgl_kirim`, `alamat_tujuan`, `kota_tujuan`) VALUES
-(25668, 522, 25004554, 5, 50000, '20-09-2021', '20-09-2021', 'tasikmalaya', 'tasikmalaya');
+INSERT INTO `tbl_pesanan` (`id_transaksi`, `id_customer`, `id_produk`, `jenis_produk`, `qty`, `harga`, `total_harga`, `tgl_pesan`, `alamat_tujuan`) VALUES
+(25668, 522, 25004554, '', 5, '0', 50000, '20-09-2021', 'tasikmalaya');
 
 --
 -- Triggers `tbl_pesanan`
@@ -193,7 +195,8 @@ INSERT INTO `tbl_produk` (`id_produk`, `id_supplier`, `id_kategori`, `jenis_prod
 (62012, 25001, 'K008', 'Pete Khas Jawa', 5000, 20, '-', 'trending1.png', 0),
 (62013, 25001, 'K006', 'Nugget ', 12000, 20, 'Nuget Murah', 'popular7.png', 1),
 (62014, 25001, 'K002', 'Potato Delife', 5000, 10, '-', 'popular3.png', 1),
-(62016, 25001, 'K002', 'Odading Mang Oleh', 20000, 0, 'Odading Mang Oleh Rasanya Pas Banget', 'sales2.png', 1);
+(62016, 25001, 'K002', 'Odading Mang Oleh', 20000, 0, 'Odading Mang Oleh Rasanya Pas Banget', 'sales2.png', 1),
+(62017, 25001, 'K002', 'sorabi cinta', 5000, 10, 'rasanya menyentuh hati dengan varian rasa yang bertabur bintang', 'trending1.png', 1);
 
 -- --------------------------------------------------------
 
@@ -237,7 +240,9 @@ CREATE TABLE `tbl_user` (
 INSERT INTO `tbl_user` (`id_user`, `id_customer`, `username`, `password`, `level`) VALUES
 (1, 625001, 'asepsurya1998@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 1),
 (2, 625002, 'inopakinstitute@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 2),
-(3, 625003, 'admin2020@gmail.com', '0192023a7bbd73250516f069df18b500', 2);
+(3, 625003, 'admin2020@gmail.com', '0192023a7bbd73250516f069df18b500', 2),
+(4, 625004, 'yogah12@gmail.com', 'de7000bcf0b652743d47507ec61d3a15', 2),
+(9, 625005, 'yogah12@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 2);
 
 --
 -- Indexes for dumped tables
@@ -265,7 +270,7 @@ ALTER TABLE `tbl_kategori`
 -- Indexes for table `tbl_keranjang_belanja`
 --
 ALTER TABLE `tbl_keranjang_belanja`
-  ADD PRIMARY KEY (`id_transaksi`);
+  ADD PRIMARY KEY (`no`);
 
 --
 -- Indexes for table `tbl_pesanan`
@@ -302,13 +307,13 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_keranjang_belanja`
 --
 ALTER TABLE `tbl_keranjang_belanja`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
