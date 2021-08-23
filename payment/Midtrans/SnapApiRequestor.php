@@ -118,7 +118,7 @@ class SnapApiRequestor
         VT_Tests::$lastHttpRequest = array(
         "url" => $url,
         "server_key" => $server_key,
-        "data_hash" = > $data_hash,
+        "data_hash" => $data_hash,
         "post" => $post,
         "curl" => $curl
         );

@@ -34,7 +34,7 @@
         <!-- checkout -->
         <div class="container position-relative">
             <!-- form start -->
-            <form action="../payment/pembayaran/checkout-process.php" method="GET">
+         
             <div class="py-5 row">
                 <div class="col-md-8 mb-3">
                     <div>
@@ -259,11 +259,32 @@
         
         
         ?>
-        <?php } ?>
-        
-        
-        <p class="mb-1"><b>Item Total</b> <span class="float-right text-dark">Rp. <?= number_format($tot_bayar,0,".",".") ?></span></p>
+     <?php } ?>   
+  <?php
+  // mengambil data barang dengan kode paling besar
+$query = mysqli_query($koneksi, "SELECT max(id_transaksi) as kodeTerbesar FROM tbl_payment");
+$data = mysqli_fetch_array($query);
+$kodeBarang = $data['kodeTerbesar'];
+ 
+// mengambil angka dari kode barang terbesar, menggunakan fungsi substr
+// dan diubah ke integer dengan (int)
+$urutan = (int) substr($kodeBarang, 3, 3);
+ 
+// bilangan yang diambil ini ditambah 1 untuk menentukan nomor urut berikutnya
+$urutan++;
+ 
+// membentuk kode barang baru
+// perintah sprintf("%03s", $urutan); berguna untuk membuat string menjadi 3 karakter
+// misalnya perintah sprintf("%03s", 15); maka akan menghasilkan '015'
+// angka yang diambil tadi digabungkan dengan kode huruf yang kita inginkan, misalnya BRG 
+$huruf = "TRS";
+$kodeBarang = $huruf . sprintf("%03s", $urutan);
+ 
+?> 
+  
+      
         <div id="1" class="desc a">
+        <p class="mb-1"><b>Item Total</b> <span class="float-right text-dark">Rp. <?= number_format($tot_bayar,0,".",".") ?></span></p>
             <p class="mb-1">Delivery <span class="text-info ml-1"><i class="feather-info"></i></span><span class="float-right text-dark">Rp.<?= number_format($ongkos,0,".",".")?></span></p>
             <h6 class="font-weight-bold mb-0">TO PAY <span class="float-right">Rp. <?= number_format($jumlah,0,".",".") ?></span></h6>
             <div class="p-3">
@@ -272,15 +293,17 @@
             </div>
         </div>
         <div id="2" class="desc">
+        <p class="mb-1"><b>Item Total</b> <span class="float-right text-dark">Rp. <?= number_format($tot_bayar,0,".",".") ?></span></p>
             <p class="mb-1">Pre Order <span class="text-info ml-1"><i class="feather-info"></i></span><span class="float-right text-dark">Rp.<?= number_format($preorder,0,".",".")?></span></p>
             
             <h6 class="font-weight-bold mb-0">TO PAY <span class="float-right">Rp. <?= number_format($tot_bayar,0,".",".") ?></span></h6>
             <div class="p-3">
                 <hr>
-                <Button type="submit" class="btn btn-success btn-block btn-lg" href="successful.html"><i class="fas fa-shopping-basket"></i> Bayar Rp.<?= number_format($tot_bayar,0,".",".") ?> <i class="feather-arrow-right"></i></button>
+                <a href="home_act/bayar.php?id_customer=<?= $id ?>&total=<?= $tot_bayar ?>&id_transaksi=<?= $kodeBarang ?>" class="btn btn-success btn-block btn-lg" href="successful.html"><i class="fas fa-shopping-basket"></i> Bayar Rp.<?= number_format($tot_bayar,0,".",".") ?> <i class="feather-arrow-right"></i></a>
             </div>
         </div>  
         <div id="3" class="desc">
+        <p class="mb-1"><b>Item Total</b> <span class="float-right text-dark">Rp. <?= number_format($tot_bayar,0,".",".") ?></span></p>
             <p class="mb-1">Pemesanan Langsung <span class="text-info ml-1"><i class="feather-info"></i></span><span class="float-right text-dark">Rp.<?= number_format($langsung,0,".",".")?></span></p>
             
             <h6 class="font-weight-bold mb-0">TO PAY <span class="float-right">Rp. <?= number_format($tot_bayar,0,".",".") ?></span></h6>
@@ -290,8 +313,8 @@
             </div>
         </div>  
    <!-- End Form -->
-   
-        </form>         
+ 
+      
     </div>
 </div>
 </div>

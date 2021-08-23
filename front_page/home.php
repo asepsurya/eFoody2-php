@@ -678,7 +678,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
           <a class="btn btn-primary btn-block" href="../pages/login/index"><button type="button" class="btn btn-primary btn-block"><i class="fas fa-shopping-basket"></i> Pesan</button></a>';
         }else{
           echo'
-          <a class="btn btn-primary btn-block"  href="home_act/add_cart.php&id_transaksi='.$kodeBarang.'?tanggal='.$tanggal_transaksi.'&id_customer='.$_SESSION['id_customer'].'&id_produk='.$mydata['id_produk'].'&nama_produk='.$mydata['jenis_produk'].'&harga='.$mydata['harga_produk'].'"><i class="fas fa-shopping-basket"></i> Pesan</a>';
+          <a class="btn btn-primary btn-block"  href="home_act/add_cart.php?id_transaksi='.$kodeBarang.'?tanggal='.$tanggal_transaksi.'&id_customer='.$_SESSION['id_customer'].'&id_produk='.$mydata['id_produk'].'&nama_produk='.$mydata['jenis_produk'].'&harga='.$mydata['harga_produk'].'"><i class="fas fa-shopping-basket"></i> Pesan</a>';
         }
         ?>
         

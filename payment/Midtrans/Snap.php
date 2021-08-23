@@ -99,6 +99,8 @@ class Snap
             $params['transaction_details']['gross_amount'] = $gross_amount;
             
         }
+        
+     
      
         if (Config::$isSanitized) {
             Sanitizer::jsonRequest($params);
@@ -111,5 +113,45 @@ class Snap
             Config::$serverKey,
             $params
         );
+    }
+}
+public funtion finish()
+{
+    $result = json_decode($this->input->post('result_data'));
+
+    if(isset($result->va_numbers[0]->bank)){
+        $bank = $result->va_numbers[0]->bank;
+    }else{
+        $bank = '-';
+    }
+
+    if(isset($result->va_numbers[0]->bank)){
+        $bank = $result->va_numbers[0]->bank;
+    }else{
+        $bank = '-';
+    }
+
+    if(isset($result->bca_va_number)){
+        $bca_va_number = $result->bca_va_number;
+    }else{
+        $bca_va_number ='-';
+    }
+
+    if(isset($result->biller_code)){
+        $biller_code = $result->biller_code;
+    }else{
+        $biller_code='-';
+    }
+
+    if(isset($result->biller_key){
+        $biller_key = $result->biller_key;
+    }else{
+        $biller_key='-';
+    }
+
+    if(isset($result->$gopay)){
+        $gopay = $result->gopay;
+    }else{
+        $gopay='-';
     }
 }
